@@ -3,8 +3,7 @@
 
 @font-face {
     font-family: 'Makcex';
-    src: url('/fonts/Makcex-Regular.woff2') format('woff2'),
-         url('/fonts/Makcex-Regular.ttf') format('truetype');
+    src: url('/fonts/Makcex.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
