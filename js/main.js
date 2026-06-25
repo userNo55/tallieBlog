@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderHeroBlocks() {
-    const sourcesGrid = document.getElementById('sources-grid-custom');
+    const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = SOURCES.map(item => 
             `<button class="box-btn" onclick="openSourcePost('source', '${item.id}')">${item.title}</button>`
         ).join('');
     }
 
-    const favGrid = document.getElementById('favorites-grid-custom');
+    const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
         favGrid.innerHTML = FAVORITES.map(item => 
             `<button class="box-btn" onclick="openSourcePost('favorite', '${item.id}')">${item.title}</button>`

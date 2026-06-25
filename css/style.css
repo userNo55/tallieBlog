@@ -9,7 +9,7 @@
 }
 
 :root { 
-    --gold: #a98648; /* Твой новый цвет */
+    --gold: #a98648; 
     --dark: #080808; 
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,7 +20,7 @@ body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif
 /* ========================================== */
 nav { 
     position: fixed; top: 0; width: 100%; 
-    padding: 30px 60px; /* Больше пространства сверху/снизу */
+    padding: 30px 60px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -29,7 +29,6 @@ nav {
     z-index: 1000; 
 }
 
-/* GOD; TALLIE вместо лого */
 .logo { 
     font-family: 'Playfair Display', serif;
     font-style: italic;
@@ -37,11 +36,12 @@ nav {
     font-weight: 700; 
     color: var(--gold); 
     cursor: pointer; 
+    letter-spacing: 1px;
 }
 
 .nav-links { 
     display: flex; 
-    gap: 50px; /* Больше пространства между пунктами, как на референсе */
+    gap: 50px; 
     list-style: none; 
     margin: 0 auto; 
     padding: 0;
@@ -58,7 +58,6 @@ nav {
     transition: color 0.3s; 
 }
 
-/* Подчеркивание при наведении и активном состоянии (как на референсе) */
 .nav-links li::after {
     content: '';
     position: absolute;
@@ -79,7 +78,7 @@ nav {
 #app { padding-top: 100px; }
 
 /* ========================================== */
-/* ГЛАВНАЯ СТРАНИЦА (ТОЛЬКО ТО, ЧТО ТЫ ПРОСИЛА) */
+/* ГЛАВНАЯ СТРАНИЦА */
 /* ========================================== */
 #main-stage { display: none; padding: 60px 10vw; }
 #main-stage.active-section { display: block; }
@@ -88,20 +87,6 @@ nav {
     margin-bottom: 60px;
 }
 
-/* GOD; TALLIE */
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 6rem;
-    margin-bottom: 40px;
-    color: #f0f0f0;
-    letter-spacing: 1px;
-}
-.hero-title span {
-    color: var(--gold);
-}
-
-/* Слоган (КРУПНЕЕ, как на референсе) */
 .hero-slogan {
     display: flex;
     flex-direction: column;
@@ -109,7 +94,7 @@ nav {
     margin-top: 20px;
 }
 .hero-slogan .line {
-    font-size: 3.2rem; /* Крупнее */
+    font-size: 3.2rem;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -123,12 +108,12 @@ nav {
 }
 .hero-slogan .hand {
     font-family: 'BLACKHAWK', cursive;
-    font-size: 4.2rem; /* Крупнее */
+    font-size: 4.2rem;
     color: var(--gold);
 }
 
 /* ========================================== */
-/* ТВОИ КНОПКИ */
+/* КНОПКИ */
 /* ========================================== */
 .bottom-links {
     display: grid;
@@ -169,7 +154,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ (Collection, Lab и т.д.) */
+/* ОВЕРЛЕЙ */
 /* ========================================== */
 #content-stage { position: fixed; inset: 0; background: rgba(8,8,8,0.98); z-index: 500; display: none; flex-direction: column; opacity: 0; transition: opacity 0.4s; }
 #content-stage.open { display: flex; opacity: 1; }
@@ -192,7 +177,6 @@ nav {
 
 @media (max-width: 900px) {
     .bottom-links { grid-template-columns: 1fr; gap: 30px; }
-    .hero-title { font-size: 3.5rem; }
     nav { padding: 15px 20px; }
     .nav-links { gap: 20px; }
     .hero-slogan .line { font-size: 2.2rem; }
