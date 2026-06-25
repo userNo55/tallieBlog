@@ -15,6 +15,14 @@
     font-style: normal;
 }
 
+/* Новый шрифт для заголовка Collection */
+@font-face {
+    font-family: 'Elizabeta';
+    src: url('/fonts/elizabeta-modern.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root { 
     --gold: #a98648; 
     --neon: #00D4FF; 
@@ -175,7 +183,7 @@ nav {
 .stage-scroll { overflow-y: auto; padding: 30px 60px 100px; max-width: 1200px; width: 100%; margin: 0 auto; }
 
 /* ========================================== */
-/* ДИЗАЙН COLLECTION (ТОЛЬКО ТВОЙ, ВОЗВРАЩЕННЫЙ) */
+/* ДИЗАЙН COLLECTION (ШРИФТ ИЗМЕНЕН) */
 /* ========================================== */
 .collection-header {
     max-width: 900px;
@@ -185,12 +193,13 @@ nav {
     align-items: flex-start;
 }
 .collection-header .main-title {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
+    /* Твой новый шрифт Elizabeta */
+    font-family: 'Elizabeta', serif;
     font-size: 4rem;
-    font-weight: 400;
+    font-weight: normal;
     color: #fff;
     line-height: 0.95;
+    letter-spacing: 2px;
 }
 .collection-header .header-line {
     width: 100%;
