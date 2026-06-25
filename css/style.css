@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Makcex&display=swap'); /* Подключаем Makcex */
+
+@font-face {
+    font-family: 'Makcex';
+    src: url('/fonts/Makcex-Regular.woff2') format('woff2'),
+         url('/fonts/Makcex-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 :root { 
     --gold: #C59B3C; 
-    --cream: #F5E6D3; /* Светло-кремовый цвет */
+    --cream: #F5E6D3; /* Светло-кремовый */
     --dark: #080808; 
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,8 +72,8 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
 /* like crazy. / like me. (Makcex, светло-кремовый) */
 .hero-slogan .hand {
     font-family: 'Makcex', cursive;
-    font-size: 2.4rem;
-    color: var(--cream); /* Светло-кремовый */
+    font-size: 2.6rem;
+    color: var(--cream);
 }
 
 /* ========================================== */
@@ -136,5 +143,4 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
     .bottom-links { grid-template-columns: 1fr; gap: 30px; }
     .hero-title { font-size: 3.5rem; }
     nav { padding: 15px 20px; }
-    .hero-slogan .hand { font-size: 1.8rem; }
 }
