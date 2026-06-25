@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TALLIE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -21,31 +20,97 @@
     </nav>
 
     <div id="app">
-        <!-- Главная -->
+        <!-- ========================================== -->
+        <!-- ГЛАВНАЯ СТРАНИЦА (HERO SECTION) -->
+        <!-- ========================================== -->
         <section id="main-stage" class="active-section">
-            <div class="hero-content">
-                <h1 class="hero-title"><span>GOD;TALLIE</span></h1>
-                <p class="hero-tagline">Write like crazy.
-                                        Write like me.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-group">
-                        <h3>Sources of Magic</h3>
-                        <div class="source-grid" id="sources-grid"></div>
+            
+            <!-- Верхний блок: Текст + Большая картинка -->
+            <div class="hero-top">
+                <div class="hero-text-block">
+                    <div class="hero-subtitle">— Stories are</div>
+                    <h1 class="hero-title">the real magic.</h1>
+                    
+                    <p class="hero-quote">I write to transform ordinary moments into something legendary.</p>
+                    
+                    <!-- Спец-фраза с рукописным шрифтом (точно по ТЗ) -->
+                    <div class="hero-slogan">
+                        <div class="line1">
+                            <span class="normal">Write</span>
+                            <span class="hand">like crazy.</span>
+                        </div>
+                        <div class="line2">
+                            <span class="normal">Write</span>
+                            <span class="hand">like me.</span>
+                        </div>
                     </div>
-                    <div class="stat-group">
-                        <h3>Favorites</h3>
-                        <div class="source-grid" id="favorites-grid"></div>
+
+                    <div class="hero-signature">TALLIE.</div>
+                </div>
+
+                <div class="hero-image-block"></div>
+            </div>
+
+            <!-- Нижний блок: Welcome + Latest Writings -->
+            <div class="hero-bottom">
+                <div class="hero-bottom-left">
+                    <div class="polaroid">
+                        <!-- Замени на фото с микрофоном -->
+                        <img src="images/tallie-stage.jpg" alt="Tallie on stage">
+                    </div>
+                    <div class="hero-welcome-text">
+                        <h3>WELCOME</h3>
+                        <h4>I'm a writer, storyteller,<br>and eternal seeker of <span class="gold">wonder</span>.</h4>
+                        <p>Words have always been my stage. From the quiet scribbles in the dark to the roar of ideas that refuse to be ignored — I write to make sense, to connect, and to leave a little magic behind.</p>
+                        <button class="btn-about">MORE ABOUT ME</button>
                     </div>
                 </div>
+
+                <!-- Latest Writings (Список последних) -->
+                <div class="hero-bottom-right">
+                    <h3>LATEST WRITINGS</h3>
+                    <ul class="latest-list">
+                        <li>
+                            <span class="title">The Illusion of Control</span>
+                            <span>MAY 18, 2024</span>
+                            <span class="icon">✦</span>
+                        </li>
+                        <li>
+                            <span class="title">Backstage Thoughts</span>
+                            <span>MAY 07, 2024</span>
+                            <span class="icon">☽</span>
+                        </li>
+                        <li>
+                            <span class="title">Notes from a Midnight Mind</span>
+                            <span>APR 26, 2024</span>
+                            <span class="icon">✦</span>
+                        </li>
+                        <li>
+                            <span class="title">Make Magic, Not Noise.</span>
+                            <span>APR 12, 2024</span>
+                            <span class="icon">✧</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+            <!-- Блок с кнопками Sources и Favorites -->
+            <div class="hero-sources-block">
+                <div class="label">Sources of Magic</div>
+                <div class="sources-grid-custom"></div>
+
+                <div class="label" style="margin-top:40px;">Favorites</div>
+                <div class="sources-grid-custom" id="favorites-grid-custom"></div>
+            </div>
+
         </section>
 
-        <!-- Оверлей -->
+        <!-- ========================================== -->
+        <!-- ОВЕРЛЕЙ (ДЛЯ ОСТАЛЬНЫХ СТРАНИЦ) -->
+        <!-- ========================================== -->
         <div id="content-stage">
             <div class="stage-header">
-                <button class="back-btn" id="back-btn" style="display:none;">← Back</button>
-                <button class="close-btn" id="close-btn" style="display:none;">✕ Close</button>
+                <button class="back-btn" id="back-btn" style="display:none;">← Close</button>
             </div>
             <div id="stage-body" class="stage-scroll"></div>
         </div>
