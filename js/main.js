@@ -1,26 +1,32 @@
-// ---- Источники магии и фавориты ----
+// ---- Источники магии и фавориты (Статика) ----
 const SOURCES = [
-    { id: 'playlist', title: 'Playlist' }, { id: 'cinema', title: 'Cinema' },
-    { id: 'tvshows', title: 'TV-shows' }, { id: 'places', title: 'Places' }
+    { id: 'playlist', title: 'Playlist' },
+    { id: 'cinema', title: 'Cinema' },
+    { id: 'tvshows', title: 'TV-shows' },
+    { id: 'places', title: 'Places' }
 ];
 const FAVORITES = [
-    { id: 'food', title: 'Food' }, { id: 'flower', title: 'Flower' },
-    { id: 'perfume', title: 'Perfume' }, { id: 'time', title: 'Time' }
+    { id: 'food', title: 'Food' },
+    { id: 'flower', title: 'Flower' },
+    { id: 'perfume', title: 'Perfume' },
+    { id: 'time', title: 'Time' }
 ];
 
-// ---- UI ----
+// ---- UI Элементы ----
 const mainStage = document.getElementById('main-stage');
 const contentStage = document.getElementById('content-stage');
 const stageBody = document.getElementById('stage-body');
 const backBtn = document.getElementById('back-btn');
 const closeBtn = document.getElementById('close-btn');
 
+// ---- Инициализация ----
 document.addEventListener('DOMContentLoaded', () => {
     renderGrid('sources-grid', SOURCES, 'source');
     renderGrid('favorites-grid', FAVORITES, 'favorite');
-    loadLists(); 
+    loadLists();
 });
 
+// ---- Отрисовка кнопок на главной ----
 function renderGrid(containerId, items, type) {
     const grid = document.getElementById(containerId);
     grid.innerHTML = items.map(item => 
@@ -28,14 +34,17 @@ function renderGrid(containerId, items, type) {
     ).join('');
 }
 
-// ---- НАВИГАЦИЯ ----
+// ---- Навигация по верхнему меню ----
 document.querySelectorAll('[data-nav]').forEach(el => {
     el.addEventListener('click', () => navigateTo(el.dataset.nav));
 });
 
 async function navigateTo(section) {
-    if(section === 'main') { closeStage(); return; }
-    
+    if (section === 'main') {
+        closeStage();
+        return;
+    }
+
     mainStage.classList.remove('active-section');
     contentStage.style.opacity = '0';
     contentStage.classList.add('open');
@@ -44,19 +53,21 @@ async function navigateTo(section) {
     const res = await fetch(`pages/${section}.html`);
     let html = await res.text();
 
-    if(section === 'collection') html = html.replace('{{stories}}', window._cachedStoriesHTML || '');
-    if(section === 'lab') html = html.replace('{{essays}}', window._cachedEssaysHTML || '');
+    if (section === 'collection') html = html.replace('{{stories}}', window._cachedStoriesHTML || '');
+    if (section === 'lab') html = html.replace('{{essays}}', window._cachedEssaysHTML || '');
 
     stageBody.innerHTML = html;
-    
+
     backBtn.style.display = 'flex';
     backBtn.innerHTML = '← Close';
     backBtn.onclick = closeStage;
-    
+
     document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
-    document.querySelector(`.nav-links li[data-nav="${section}"]`)?.classList.add('active');
+    const activeLink = document.querySelector(`.nav-links li[data-nav="${section}"]`);
+    if (activeLink) activeLink.classList.add('active');
 }
 
+// ---- Закрытие оверлея ----
 function closeStage() {
     contentStage.style.opacity = '0';
     setTimeout(() => {
@@ -66,38 +77,39 @@ function closeStage() {
     }, 400);
 }
 
-// ---- ЗАГРУЗКА СПИСКОВ ----
+// ---- ЗАГРУЗКА СПИСКОВ И ПАРСИНГ ----
 async function loadLists() {
-    // Список файлов историй.
-    const storyFiles = ['born-fire.html', 'cynical.html']; 
-    
+    // --- Список историй ---
+    // Добавляй новые файлы сюда: ['born-fire.html', 'cynical.html', 'new-story.html']
+    const storyFiles = ['born-fire.html', 'cynical.html'];
+
     let storiesHtml = '';
     for (let i = 0; i < storyFiles.length; i++) {
         const file = storyFiles[i];
         const id = file.replace('.html', '');
 
+        // Достаем название из заголовка файла
         const res = await fetch(`stories/${file}`);
         const text = await res.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
         const title = doc.querySelector('h1')?.textContent || id;
 
-        const num = String(i + 1).padStart(2, '0');
+        const num = String(i + 1).padStart(2, '0'); // 01, 02...
 
+        // КАРТОЧКА ТЕЛЕВИЗОРА (как на референсе)
         storiesHtml += `
             <div class="tv-card" onclick="loadStory('${file}')">
                 <div class="tv-screen" style="background-image: url('images/${id}.jpg');">
                     <span class="tv-num">${num}</span>
-                </div>
-                <div class="tv-info">
-                    <h3>${title}</h3>
+                    <div class="tv-title-overlay">${title}</div>
                 </div>
             </div>
         `;
     }
     window._cachedStoriesHTML = storiesHtml;
 
-    // Эссе
+    // --- Список эссе ---
     const essayFiles = ['social.html', 'writing.html'];
     let essaysHtml = '';
     for (const file of essayFiles) {
@@ -117,83 +129,83 @@ async function loadLists() {
     window._cachedEssaysHTML = essaysHtml;
 }
 
-// ---- ИСПРАВЛЕННАЯ ЗАГРУЗКА СТРАНИЦЫ ИСТОРИИ (ТАБЫ) ----
+// ---- ЗАГРУЗКА СТРАНИЦЫ ИСТОРИИ (ТАБЫ ПО КЛИКУ) ----
 async function loadStory(file) {
     contentStage.style.opacity = '0';
     setTimeout(async () => {
-        // Загружаем HTML
         const res = await fetch(`stories/${file}`);
         let html = await res.text();
 
-        // 1. Ищем заголовок
+        // Временный парсер для извлечения блоков
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
+
+        // Вытаскиваем данные из оригинального HTML
         const h1 = tempDiv.querySelector('h1');
         const titleText = h1 ? h1.textContent : 'Untitled';
         const metaText = tempDiv.querySelector('.world-meta')?.innerHTML || '';
+        const storyText = tempDiv.querySelector('.story-text')?.innerHTML || '';
 
-        // 2. Создаем структуру с ТАБАМИ (вкладками)
+        // Ищем блоки для табов по классам
+        const placeBlock = tempDiv.querySelector('.place-block');
+        const starBlock = tempDiv.querySelector('.star-block');
+        const linkBlock = tempDiv.querySelector('.link-block');
+
+        // Собираем HTML заново с табами
         let newHtml = `
             <div class="world-detail">
                 <h1 class="world-title">${titleText}</h1>
                 <div class="world-meta">${metaText}</div>
                 
-                <!-- Меню вкладок -->
-                <div class="tabs-nav" style="display:flex; gap:20px; margin: 30px 0; border-bottom: 1px solid #222; padding-bottom: 10px;">
+                <div class="tabs-nav" id="tabs-container">
         `;
 
-        // Ищем блоки Place, Star, Link внутри загруженного HTML
-        const placeBlock = tempDiv.querySelector('.tag-box:has(h4:contains("Place"))') || tempDiv.querySelector('.place-block');
-        const starBlock = tempDiv.querySelector('.tag-box:has(h4:contains("Star"))') || tempDiv.querySelector('.star-block');
-        const linkBlock = tempDiv.querySelector('.tag-box:has(h4:contains("Link"))') || tempDiv.querySelector('.link-block');
-        const storyText = tempDiv.querySelector('.story-text');
+        // Кнопки табов (рисуем только если блок существует)
+        if (placeBlock) newHtml += `<div class="tab-btn" data-tab="place">Place</div>`;
+        if (starBlock) newHtml += `<div class="tab-btn" data-tab="star">Star</div>`;
+        if (linkBlock) newHtml += `<div class="tab-btn" data-tab="link">Link</div>`;
 
-        // Наполняем меню вкладок (только если блок есть в файле)
-        if(placeBlock) newHtml += `<div class="tab-btn" data-target="place" style="cursor:pointer; color:#888; text-transform:uppercase; font-size:12px; letter-spacing:1px;">Place</div>`;
-        if(starBlock) newHtml += `<div class="tab-btn" data-target="star" style="cursor:pointer; color:#888; text-transform:uppercase; font-size:12px; letter-spacing:1px;">Star</div>`;
-        if(linkBlock) newHtml += `<div class="tab-btn" data-target="link" style="cursor:pointer; color:#888; text-transform:uppercase; font-size:12px; letter-spacing:1px;">Link</div>`;
-        
-        newHtml += `</div> <!-- end tabs-nav -->`;
+        newHtml += `</div>`;
 
-        // 3. Контейнеры для контента вкладок (изначально скрыты, кроме первой, если есть)
-        let isFirst = true;
-        if(placeBlock) {
-            newHtml += `<div class="tab-content" id="tab-place" style="${isFirst ? 'display:block;' : 'display:none;'} margin-bottom: 20px;">${placeBlock.innerHTML}</div>`;
-            isFirst = false;
-        }
-        if(starBlock) {
-            newHtml += `<div class="tab-content" id="tab-star" style="${isFirst ? 'display:block;' : 'display:none;'} margin-bottom: 20px;">${starBlock.innerHTML}</div>`;
-            isFirst = false;
-        }
-        if(linkBlock) {
-            newHtml += `<div class="tab-content" id="tab-link" style="${isFirst ? 'display:block;' : 'display:none;'} margin-bottom: 20px;">${linkBlock.innerHTML}</div>`;
-            isFirst = false;
-        }
+        // Контент табов
+        if (placeBlock) newHtml += `<div class="tab-content" id="tab-place">${placeBlock.innerHTML}</div>`;
+        if (starBlock) newHtml += `<div class="tab-content" id="tab-star">${starBlock.innerHTML}</div>`;
+        if (linkBlock) newHtml += `<div class="tab-content" id="tab-link">${linkBlock.innerHTML}</div>`;
 
-        // 4. Текст истории (Story) всегда виден внизу
+        // Story внизу (всегда видна)
         newHtml += `
-                <div class="story-text" style="margin-top: 40px; border-top: 1px solid #222; padding-top: 30px;">
-                    ${storyText ? storyText.innerHTML : ''}
-                </div>
+                <div class="story-text">${storyText}</div>
             </div>
         `;
 
-        // Вставляем готовый HTML
         stageBody.innerHTML = newHtml;
 
-        // 5. Добавляем логику кликов по вкладкам (Tab switching)
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Сбрасываем стили всех кнопок и скрываем весь контент
-                document.querySelectorAll('.tab-btn').forEach(b => b.style.color = '#888');
-                document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-                
-                // Активируем текущую кнопку и показываем контент
-                this.style.color = 'var(--gold)';
-                const targetId = this.dataset.target;
-                document.getElementById(`tab-${targetId}`).style.display = 'block';
+        // --- ЛОГИКА КЛИКОВ ПО ТАБАМ ---
+        const tabsContainer = document.getElementById('tabs-container');
+        if (tabsContainer) {
+            const tabs = tabsContainer.querySelectorAll('.tab-btn');
+            const contents = document.querySelectorAll('.tab-content');
+
+            // По умолчанию открываем первый таб, если он есть
+            if (tabs.length > 0 && contents.length > 0) {
+                tabs[0].classList.add('active');
+                contents[0].classList.add('active');
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Скрываем все
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Показываем нужный
+                    this.classList.add('active');
+                    const targetId = `tab-${this.dataset.tab}`;
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) targetContent.classList.add('active');
+                });
             });
-        });
+        }
 
         backBtn.innerHTML = '← Back to Collection';
         backBtn.onclick = () => navigateTo('collection');
@@ -201,7 +213,7 @@ async function loadStory(file) {
     }, 300);
 }
 
-// ---- ОСТАЛЬНОЕ БЕЗ ИЗМЕНЕНИЙ ----
+// ---- ЗАГРУЗКА СТРАНИЦЫ ЭССЕ ----
 async function loadEssay(file) {
     contentStage.style.opacity = '0';
     setTimeout(async () => {
@@ -213,9 +225,10 @@ async function loadEssay(file) {
     }, 300);
 }
 
+// ---- ОТКРЫТИЕ ПОСТОВ ИЗ ГЛАВНОЙ (Sources/Favorites) ----
 function openSourcePost(type, id) {
     let title = '';
-    if(type === 'source') title = SOURCES.find(s => s.id === id).title;
+    if (type === 'source') title = SOURCES.find(s => s.id === id).title;
     else title = FAVORITES.find(s => s.id === id).title;
 
     contentStage.style.opacity = '0';
