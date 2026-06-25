@@ -20,61 +20,42 @@
     </nav>
 
     <div id="app">
+        <!-- ТОЧНО ПО ТВОЕМУ СКРИНШОТУ -->
         <section id="main-stage" class="active-section">
-            
-            <div class="hero-container">
-                <!-- ЛЕВАЯ ЧАСТЬ: ТЕКСТ -->
-                <div class="hero-left">
-                    <!-- STORIES ARE (Белый, тонкий, капс) -->
-                    <div class="hero-sub">— STORIES ARE</div>
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <!-- Только этот заголовок -->
+                    <h1 class="hero-title">GOD;<span>TALLIE</span></h1>
                     
-                    <!-- the real magic (Золотой, меловой) -->
-                    <h1 class="hero-title">the <span>real</span> magic.</h1>
-                    
-                    <!-- Текст описания -->
-                    <p class="hero-desc">I WRITE TO TRANSFORM ORDINARY MOMENTS INTO<br>SOMETHING LEGENDARY.</p>
-
-                    <!-- ========================================== -->
-                    <!-- СЛОГАН: Write (как Stories) + like crazy. (как magic) -->
-                    <!-- ========================================== -->
-                    <div class="hero-slogan">
-                        <div class="slogan-line">
-                            <span class="plain">Write</span> <span class="hand">like crazy.</span>
-                        </div>
-                        <div class="slogan-line">
-                            <span class="plain">Write</span> <span class="hand">like me.</span>
-                        </div>
-                    </div>
-
-                    <!-- Подпись TALLIE (Золотой, меловой) -->
-                    <div class="hero-signature">TALLIE.</div>
-                </div>
-
-                <!-- ПРАВАЯ ЧАСТЬ: КАРТИНКА -->
-                <div class="hero-right">
-                    <div class="hero-image-box"></div>
+                    <!-- Только этот белый текст -->
+                    <p class="hero-slogan">Write like crazy. Write like me.</p>
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- БЛОК КНОПОК SOURCES И FAVORITES -->
-            <!-- ========================================== -->
-            <div class="hero-sources-block">
-                <div class="sources-wrapper">
-                    <div class="source-column">
-                        <div class="label">SOURCES OF MAGIC</div>
-                        <div class="sources-grid-custom" id="sources-grid-custom"></div>
+            <div class="bottom-links">
+                <div class="sources-section">
+                    <div class="section-label">SOURCES OF MAGIC</div>
+                    <div class="grid-2x2">
+                        <button class="box-btn">Playlist</button>
+                        <button class="box-btn">Cinema</button>
+                        <button class="box-btn">TV-shows</button>
+                        <button class="box-btn">Places</button>
                     </div>
-                    <div class="source-column">
-                        <div class="label">FAVORITES</div>
-                        <div class="sources-grid-custom" id="favorites-grid-custom"></div>
+                </div>
+
+                <div class="favorites-section">
+                    <div class="section-label">FAVORITES</div>
+                    <div class="grid-2x2">
+                        <button class="box-btn">Food</button>
+                        <button class="box-btn">Flower</button>
+                        <button class="box-btn">Perfume</button>
+                        <button class="box-btn">Time</button>
                     </div>
                 </div>
             </div>
-
         </section>
 
-        <!-- ОВЕРЛЕЙ (ДЛЯ ОСТАЛЬНЫХ СТРАНИЦ) -->
+        <!-- Оверлей для страниц (Collection, Lab и т.д.) -->
         <div id="content-stage">
             <div class="stage-header">
                 <button class="back-btn" id="back-btn" style="display:none;">← Close</button>
