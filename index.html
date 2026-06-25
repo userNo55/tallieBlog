@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALLIE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="logo" data-nav="main">T</div>
+        <ul class="nav-links">
+            <li data-nav="main">About Tallie</li>
+            <li data-nav="collection">Collection</li>
+            <li data-nav="lab">Lab</li>
+            <li data-nav="indulgentia">Indulgentia</li>
+            <li data-nav="pray">Pray</li>
+        </ul>
+    </nav>
+
+    <div id="app">
+        <!-- Главная -->
+        <section id="main-stage" class="active-section">
+            <div class="hero-content">
+                <h1 class="hero-title"><span>TALLIE</span></h1>
+                <p class="hero-tagline">Write like crazy. Write like me.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-group">
+                        <h3>Sources of Magic</h3>
+                        <div class="source-grid" id="sources-grid"></div>
+                    </div>
+                    <div class="stat-group">
+                        <h3>Favorites</h3>
+                        <div class="source-grid" id="favorites-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Оверлей -->
+        <div id="content-stage">
+            <div class="stage-header">
+                <button class="back-btn" id="back-btn" style="display:none;">← Back</button>
+                <button class="close-btn" id="close-btn" style="display:none;">✕ Close</button>
+            </div>
+            <div id="stage-body" class="stage-scroll"></div>
+        </div>
+    </div>
+</body>
+</html>
