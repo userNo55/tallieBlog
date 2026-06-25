@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+/* Подключаем VCR OSD Mono через альтернативу (цифры будут как на старых ТВ) */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 :root { --gold: #C59B3C; --dark: #080808; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif; }
@@ -61,7 +66,7 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
 /* ============================================= */
 .tv-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* 2 колонки ровно */
+    grid-template-columns: 1fr 1fr; 
     gap: 40px; 
     max-width: 900px; 
     margin: 0 auto; 
@@ -71,7 +76,7 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
 .tv-card { 
     position: relative;
     aspect-ratio: 4 / 3;
-    border-radius: 40px 40px 50px 50px; /* Выпуклые углы */
+    border-radius: 20px; /* Чуть меньше скругление, чтобы выглядело как ТВ */
     overflow: hidden;
     cursor: pointer;
     background: #000;
@@ -93,7 +98,7 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
     z-index: 1;
 }
 
-/* Scanlines */
+/* Scanlines (эффект строчек) */
 .tv-screen::before {
     content: '';
     position: absolute;
@@ -103,42 +108,49 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
     background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px);
     mix-blend-mode: multiply;
 }
-/* Виньетка */
+
+/* Виньетка (затемнение по краям) */
 .tv-screen::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 3;
     pointer-events: none;
-    background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.8) 100%);
+    background: radial-gradient(circle at center, transparent 55%, rgba(0,0,0,0.8) 100%);
 }
 
-/* --- Номер (01, 02) - Строгий шрифт, как на референсе --- */
+/* --- Номер (VCR OSD STYLE) --- */
 .tv-num {
     position: absolute;
     top: 25px;
     right: 25px;
     z-index: 5;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
+    /* VCR OSD Mono стиль */
+    font-family: 'Share Tech Mono', monospace; 
+    font-weight: 400;
     color: #fff;
-    font-size: 22px;
+    font-size: 28px;
     text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    letter-spacing: 1px;
 }
 
-/* --- Название (передается из HTML, с разными шрифтами/цветами) --- */
+/* --- Название (ЦЕНТРИРОВАНО ПО СЕРЕДИНЕ) --- */
 .tv-title-overlay {
     position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
-    padding: 0 25px;
+    top: 0; left: 0; right: 0; bottom: 0;
     z-index: 5;
+    
+    /* Центрируем идеально по горизонтали и вертикали */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-size: 2.8rem;
-    line-height: 1;
+    
+    font-size: 3rem;
+    line-height: 1.1;
     text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 2px 5px rgba(0,0,0,0.8);
     pointer-events: none;
+    padding: 20px;
 }
 
 /* --- Табы на странице истории --- */
@@ -164,7 +176,7 @@ nav { position: fixed; top: 0; width: 100%; padding: 20px 40px; display: flex; j
 
 @media (max-width: 900px) {
     .hero-stats { grid-template-columns: 1fr; }
-    .tv-grid { grid-template-columns: 1fr; } /* На мобилке в 1 колонку */
+    .tv-grid { grid-template-columns: 1fr; }
     .collection-header .main-title { font-size: 2.5rem; }
     .tv-title-overlay { font-size: 2rem; }
     .stage-header { padding: 90px 20px 20px; justify-content: space-between; }

@@ -73,6 +73,7 @@ function closeStage() {
 
 // ---- ЗАГРУЗКА СПИСКОВ ----
 async function loadLists() {
+    // Добавляй новые истории сюда
     const storyFiles = ['born-fire.html', 'cynical.html'];
 
     let storiesHtml = '';
@@ -80,17 +81,19 @@ async function loadLists() {
         const file = storyFiles[i];
         const id = file.replace('.html', '');
 
-        // Достаем HTML заголовка (с разметкой и классами для шрифтов)
+        // Достаем HTML заголовка (он пойдет в центр ТВ)
         const res = await fetch(`stories/${file}`);
         const text = await res.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
         
-        // Берем ВЕСЬ блок заголовка, какой он есть в файле
-        const titleHTML = doc.querySelector('h1.tv-title') ? doc.querySelector('h1.tv-title').innerHTML : (doc.querySelector('h1')?.innerHTML || id);
+        // Ищем тег с классом tv-title. Если нет, берем обычный h1
+        const titleElement = doc.querySelector('.tv-title');
+        const titleHTML = titleElement ? titleElement.innerHTML : (doc.querySelector('h1')?.innerHTML || id);
 
         const num = String(i + 1).padStart(2, '0');
 
+        // Карточка ТВ
         storiesHtml += `
             <div class="tv-card" onclick="loadStory('${file}')">
                 <div class="tv-screen" style="background-image: url('images/${id}.jpg');">
@@ -122,14 +125,13 @@ async function loadLists() {
     window._cachedEssaysHTML = essaysHtml;
 }
 
-// ---- ЗАГРУЗКА СТРАНИЦЫ ИСТОРИИ ----
+// ---- ЗАГРУЗКА СТРАНИЦЫ ИСТОРИИ (С ТАБАМИ) ----
 async function loadStory(file) {
     contentStage.style.opacity = '0';
     setTimeout(async () => {
         const res = await fetch(`stories/${file}`);
         let html = await res.text();
 
-        // Используем временный парсер
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
         
@@ -166,7 +168,7 @@ async function loadStory(file) {
 
         stageBody.innerHTML = newHtml;
 
-        // ЛОГИКА ТАБОВ
+        // Логика табов
         const tabsContainer = document.getElementById('tabs-container');
         if (tabsContainer) {
             const tabs = tabsContainer.querySelectorAll('.tab-btn');
