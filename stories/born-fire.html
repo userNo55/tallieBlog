@@ -1,31 +1,29 @@
-<div class="world-detail">
-    <!-- Эти два элемента парсятся для экрана телевизора -->
-    <h1 class="tv-title" style="display:none;">Born to Fire</h1>
-    <div class="tv-code" style="display:none;">BTF_01</div>
+<h1 class="world-title">Born to Fire</h1>
+<div class="world-meta"><span>JUN 2026</span></div>
 
-    <h1 class="world-title">Born to Fire</h1>
-    <div class="world-meta"><span>JUN 2026</span></div>
-    
-    <div class="tags-wrap">
-        <div class="tag-box">
-            <h4>Place</h4>
-            <p><b>Tokyo Underground</b><br>Neon lights and dark alleys.</p>
-            <img src="images/place-tokyo.jpg" alt="Place">
-        </div>
-        <div class="tag-box">
-            <h4>Star</h4>
-            <div style="display:flex;gap:15px;align-items:center;margin-top:10px;">
-                <img src="images/rina.jpg" style="width:60px;height:60px;border-radius:50%;flex:none;">
-                <p><b>Rina</b><br>The drummer with the broken watch.</p>
-            </div>
-        </div>
-        <div class="tag-box">
-            <h4>Link</h4>
-            <p style="color:var(--gold);cursor:pointer;" onclick="alert('Playing audio...')">▶ Listen to Audio</p>
-        </div>
-    </div>
+<!-- Place -->
+<div class="tag-box place-block">
+    <h4>Place</h4>
+    <p><b>Tokyo Underground</b><br>Neon lights and dark alleys.</p>
+    <img src="images/place-tokyo.jpg" alt="Place">
+</div>
 
-    <div class="story-text">
-        The stage lights burned my eyes, but I kept playing. The rhythm was the only thing keeping me alive.
+<!-- Star -->
+<div class="tag-box star-block">
+    <h4>Star</h4>
+    <div style="display:flex;gap:15px;align-items:center;margin-top:10px;">
+        <img src="images/rina.jpg" style="width:60px;height:60px;border-radius:50%;flex:none;">
+        <p><b>Rina</b><br>The drummer with the broken watch.</p>
     </div>
+</div>
+
+<!-- Link -->
+<div class="tag-box link-block">
+    <h4>Link</h4>
+    <p style="color:var(--gold);cursor:pointer;" onclick="alert('Playing audio...')">▶ Listen to Audio</p>
+</div>
+
+<!-- Story -->
+<div class="story-text">
+    The stage lights burned my eyes, but I kept playing. The rhythm was the only thing keeping me alive.
 </div>
