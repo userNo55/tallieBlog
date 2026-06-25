@@ -1,10 +1,14 @@
 const SOURCES = [
-    { id: 'playlist', title: 'Playlist' }, { id: 'cinema', title: 'Cinema' },
-    { id: 'tvshows', title: 'TV-shows' }, { id: 'places', title: 'Places' }
+    { id: 'playlist', title: 'Playlist' },
+    { id: 'cinema', title: 'Cinema' },
+    { id: 'tvshows', title: 'TV-shows' },
+    { id: 'places', title: 'Places' }
 ];
 const FAVORITES = [
-    { id: 'food', title: 'Food' }, { id: 'flower', title: 'Flower' },
-    { id: 'perfume', title: 'Perfume' }, { id: 'time', title: 'Time' }
+    { id: 'food', title: 'Food' },
+    { id: 'flower', title: 'Flower' },
+    { id: 'perfume', title: 'Perfume' },
+    { id: 'time', title: 'Time' }
 ];
 
 const mainStage = document.getElementById('main-stage');
@@ -21,14 +25,14 @@ function renderHeroBlocks() {
     const sourcesGrid = document.getElementById('sources-grid-custom');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = SOURCES.map(item => 
-            `<button class="source-item" onclick="openSourcePost('source', '${item.id}')">${item.title}</button>`
+            `<button class="box-btn" onclick="openSourcePost('source', '${item.id}')">${item.title}</button>`
         ).join('');
     }
 
     const favGrid = document.getElementById('favorites-grid-custom');
     if(favGrid) {
         favGrid.innerHTML = FAVORITES.map(item => 
-            `<button class="source-item" onclick="openSourcePost('favorite', '${item.id}')">${item.title}</button>`
+            `<button class="box-btn" onclick="openSourcePost('favorite', '${item.id}')">${item.title}</button>`
         ).join('');
     }
 }

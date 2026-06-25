@@ -9,8 +9,9 @@
 </head>
 <body>
     <nav>
-        <!-- Логотип GOD; TALLIE как на референсе -->
+        <!-- GOD; TALLIE вместо лого -->
         <div class="logo" data-nav="main">GOD; TALLIE</div>
+        
         <ul class="nav-links">
             <li data-nav="main">About Tallie</li>
             <li data-nav="collection">Collection</li>
@@ -22,83 +23,47 @@
 
     <div id="app">
         <section id="main-stage" class="active-section">
-            
-            <div class="hero-wrapper">
-                <div class="hero-content">
-                    <div class="hero-sub">— STORIES ARE</div>
-                    <h1 class="hero-title">the <span>real</span> magic.</h1>
-                    <p class="hero-desc">I WRITE TO TRANSFORM ORDINARY MOMENTS INTO<br>SOMETHING LEGENDARY.</p>
-                    
-                    <!-- КРУПНЫЙ СЛОГАН -->
-                    <div class="hero-slogan">
-                        <div class="line">Write <span class="hand">like crazy.</span></div>
-                        <div class="line">Write <span class="hand">like me.</span></div>
-                    </div>
-                    
-                    <div class="hero-signature">TALLIE.</div>
-                </div>
+            <div class="hero-content">
+                
+                <!-- GOD; TALLIE -->
+                <h1 class="hero-title">GOD;<span>TALLIE</span></h1>
 
-                <div class="hero-right">
-                    <div class="hero-image-box"></div>
-                </div>
-            </div>
-
-            <!-- СЕКЦИЯ WELCOME (Поляроид + Текст) -->
-            <div class="welcome-section">
-                <div class="welcome-left">
-                    <div class="polaroid-card">
-                        <img src="images/polaroid-stage.jpg" alt="Stage">
-                        <div class="polaroid-text">Observe. Dream. Write.<br>Repeat.</div>
+                <!-- Слоган (Крупнее, 2 строки) -->
+                <div class="hero-slogan">
+                    <div class="line">
+                        <span class="plain">Write</span>
+                        <span class="hand">like crazy.</span>
                     </div>
-                    <div class="welcome-text">
-                        <div class="welcome-label">WELCOME</div>
-                        <h2>I'm a writer, storyteller,<br>and eternal seeker of <span class="gold">wonder</span>.</h2>
-                        <p>Words have always been my stage. From the quiet scribbles in the dark to the roar of ideas that refuse to be ignored — I write to make sense, to connect, and to leave a little magic behind.</p>
-                        <button class="btn-about" onclick="navigateTo('collection')">MORE ABOUT ME <span style="font-size:16px; margin-left:8px;">✦</span></button>
+                    <div class="line">
+                        <span class="plain">Write</span>
+                        <span class="hand">like me.</span>
                     </div>
                 </div>
 
-                <div class="welcome-right">
-                    <div class="list-label">LATEST WRITINGS</div>
-                    <ul class="latest-list">
-                        <li>
-                            <div class="list-item-left">
-                                <span class="title">The Illusion of Control</span>
-                                <span class="date">MAY 18, 2024</span>
-                            </div>
-                            <span class="icon">✦</span>
-                        </li>
-                        <li>
-                            <div class="list-item-left">
-                                <span class="title">Backstage Thoughts</span>
-                                <span class="date">MAY 07, 2024</span>
-                            </div>
-                            <span class="icon">☽</span>
-                        </li>
-                        <li>
-                            <div class="list-item-left">
-                                <span class="title">Notes from a Midnight Mind</span>
-                                <span class="date">APR 26, 2024</span>
-                            </div>
-                            <span class="icon">✦</span>
-                        </li>
-                        <li>
-                            <div class="list-item-left">
-                                <span class="title">Make Magic, Not Noise.</span>
-                                <span class="date">APR 12, 2024</span>
-                            </div>
-                            <span class="icon">✧</span>
-                        </li>
-                    </ul>
-                    <div class="signature-bottom">More stories this way</div>
+            </div>
+
+            <!-- ТВОИ КНОПКИ БЕЗ ИЗМЕНЕНИЙ -->
+            <div class="bottom-links">
+                <div class="sources-section">
+                    <div class="section-label">SOURCES OF MAGIC</div>
+                    <div class="grid-2x2">
+                        <button class="box-btn">Playlist</button>
+                        <button class="box-btn">Cinema</button>
+                        <button class="box-btn">TV-shows</button>
+                        <button class="box-btn">Places</button>
+                    </div>
+                </div>
+
+                <div class="favorites-section">
+                    <div class="section-label">FAVORITES</div>
+                    <div class="grid-2x2">
+                        <button class="box-btn">Food</button>
+                        <button class="box-btn">Flower</button>
+                        <button class="box-btn">Perfume</button>
+                        <button class="box-btn">Time</button>
+                    </div>
                 </div>
             </div>
-
-            <!-- ПОДВАЛ С ЦИТАТОЙ -->
-            <div class="footer-quote">
-                <span>“</span> WE ARE ALL JUST MAGIC, TRYING TO BE REMEMBERED. <span>”</span> - UNKNOWN
-            </div>
-
         </section>
 
         <div id="content-stage">
