@@ -8,9 +8,18 @@
     font-style: italic;
 }
 
+@font-face {
+    font-family: 'Avaneonz';
+    src: url('/fonts/avaneonz-line.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root { 
     --gold: #a98648; 
     --dark: #080808; 
+    --neon: #00D4FF; /* Голубой цвет свечения */
+    --neon-glow: 0 0 10px #00D4FF, 0 0 20px #00D4FF, 0 0 40px #00D4FF;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif; }
@@ -30,13 +39,19 @@ nav {
 }
 
 .logo { 
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 28px; 
-    font-weight: 700; 
-    color: var(--gold); 
+    font-family: 'Avaneonz', sans-serif;
+    font-size: 32px; 
+    font-weight: normal; 
+    color: var(--neon); 
     cursor: pointer; 
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    /* Голубое свечение как вывеска */
+    text-shadow: var(--neon-glow);
+    transition: text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 15px #00D4FF, 0 0 30px #00D4FF, 0 0 60px #00D4FF;
 }
 
 .nav-links { 
