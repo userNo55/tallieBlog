@@ -1,0 +1,22 @@
+[
+  {
+    "id": "food",
+    "title": "Food",
+    "text": "Taste is memory. The smell of certain dishes brings back entire moments of my life. This is my food diary."
+  },
+  {
+    "id": "flower",
+    "title": "Flower",
+    "text": "Flowers are the language the earth speaks when words fail. These are my favorites."
+  },
+  {
+    "id": "perfume",
+    "title": "Perfume",
+    "text": "Scent is the strongest trigger of emotion. These are the bottles that hold my nostalgia."
+  },
+  {
+    "id": "time",
+    "title": "Time",
+    "text": "The time of day, the season, the moment — they all hold a different kind of magic. These are my times."
+  }
+]

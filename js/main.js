@@ -1,22 +1,19 @@
-const SOURCES = [
-    { id: 'playlist', title: 'Playlist' },
-    { id: 'cinema', title: 'Cinema' },
-    { id: 'tvshows', title: 'TV-shows' },
-    { id: 'places', title: 'Places' }
-];
-const FAVORITES = [
-    { id: 'food', title: 'Food' },
-    { id: 'flower', title: 'Flower' },
-    { id: 'perfume', title: 'Perfume' },
-    { id: 'time', title: 'Time' }
-];
-
 const mainStage = document.getElementById('main-stage');
 const contentStage = document.getElementById('content-stage');
 const stageBody = document.getElementById('stage-body');
 const backBtn = document.getElementById('back-btn');
 
-document.addEventListener('DOMContentLoaded', () => {
+let SOURCES = [];
+let FAVORITES = [];
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // Загружаем тексты из JSON файлов
+    const sourcesRes = await fetch('content/sources.json');
+    SOURCES = await sourcesRes.json();
+
+    const favRes = await fetch('content/favorites.json');
+    FAVORITES = await favRes.json();
+
     renderHeroBlocks();
     loadLists();
 });
@@ -72,13 +69,10 @@ function closeStage() {
     }, 400);
 }
 
-// ==============================================================
-// АВТОМАТИЧЕСКАЯ ЗАГРУЗКА ИЗ ПАПОК (БЕЗ РУЧНОГО ПЕРЕЧИСЛЕНИЯ)
-// ==============================================================
 async function loadLists() {
-    // 1. Загружаем список историй из JSON файла
-    const listRes = await fetch('stories/list.json');
-    const storyFiles = await listRes.json();
+    // --- Истории ---
+    const storiesRes = await fetch('stories/list.json');
+    const storyFiles = await storiesRes.json();
 
     let storiesHtml = '';
     for (let i = 0; i < storyFiles.length; i++) {
@@ -103,8 +97,10 @@ async function loadLists() {
     }
     window._cachedStoriesHTML = storiesHtml;
 
-    // 2. Загружаем эссе (тоже можно через JSON, но пока оставляем списком)
-    const essayFiles = ['social.html', 'writing.html'];
+    // --- Эссе ---
+    const essaysRes = await fetch('essays/list.json');
+    const essayFiles = await essaysRes.json();
+
     let essaysHtml = '';
     for (const file of essayFiles) {
         const id = file.replace('.html', '');
@@ -205,13 +201,24 @@ async function loadEssay(file) {
 }
 
 function openSourcePost(type, id) {
-    let title = '';
-    if (type === 'source') title = SOURCES.find(s => s.id === id).title;
-    else title = FAVORITES.find(s => s.id === id).title;
+    let item = null;
+    if (type === 'source') {
+        item = SOURCES.find(s => s.id === id);
+    } else {
+        item = FAVORITES.find(s => s.id === id);
+    }
+
+    if (!item) return;
+
     contentStage.style.opacity = '0';
     contentStage.classList.add('open');
     setTimeout(() => {
-        stageBody.innerHTML = `<div style="max-width:700px; margin:0 auto;"><h1 class="world-title" style="font-size:2.5rem;">${title}</h1><div class="story-text">My personal reflection on <b>${title}</b>.</div></div>`;
+        stageBody.innerHTML = `
+            <div style="max-width:700px; margin:0 auto;">
+                <h1 class="world-title" style="font-size:2.5rem;">${item.title}</h1>
+                <div class="story-text">${item.text}</div>
+            </div>
+        `;
         backBtn.style.display = 'flex';
         backBtn.innerHTML = '← Back to Home';
         backBtn.onclick = closeStage;
