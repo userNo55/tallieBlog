@@ -120,7 +120,7 @@ nav {
     font-family: 'Inter', sans-serif;
     color: #f0f0f0;
     font-weight: 300;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 2px;
 }
 
