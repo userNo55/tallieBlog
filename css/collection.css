@@ -1,4 +1,16 @@
+/* ========================================== */
+/* ПОДКЛЮЧЕНИЕ ШРИФТА (GLOUCESTER MT EXTRA CONDENSED) */
+/* ========================================== */
+@font-face {
+    font-family: 'Gloucester';
+    src: url('/fonts/gloucester-mt-extra-condensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ========================================== */
 /* СТИЛИ ДЛЯ COLLECTION (И ТВ-СЕТКА, И СТРАНИЦА ИСТОРИИ) */
+/* ========================================== */
 
 .collection-header {
     max-width: 900px;
@@ -8,7 +20,7 @@
     align-items: flex-start;
 }
 .collection-header .main-title {
-    font-family: 'Elizabeta', serif;
+    font-family: 'Gloucester', serif; /* Теперь Gloucester MT Extra Condensed */
     font-size: 4rem;
     font-weight: normal;
     color: #fff;
