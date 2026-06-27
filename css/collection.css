@@ -1,4 +1,4 @@
-/* ТВОЙ ИДЕАЛЬНЫЙ ДИЗАЙН COLLECTION. Я БОЛЬШЕ НЕ ПИШУ СЮДА ПРАВКИ. */
+/* СТИЛИ ДЛЯ COLLECTION (И ТВ-СЕТКА, И СТРАНИЦА ИСТОРИИ) */
 
 .collection-header {
     max-width: 900px;
@@ -104,3 +104,64 @@
     text-shadow: 0 4px 20px rgba(0,0,0,0.9);
     white-space: normal;
 }
+
+/* ========================================== */
+/* СТРАНИЦА ИСТОРИИ (World Detail + Tabs) */
+/* ========================================== */
+.world-detail { max-width: 800px; margin: 0 auto; }
+.world-title { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 3.5rem; 
+    margin-bottom: 10px; 
+    color: #fff; 
+}
+.world-meta { color: #555; font-size: 12px; margin-bottom: 30px; }
+
+.tabs-nav { 
+    display: flex; 
+    gap: 30px; 
+    margin-bottom: 30px; 
+    border-bottom: 1px solid #222; 
+    padding-bottom: 15px; 
+}
+.tab-btn { 
+    cursor: pointer; 
+    font-size: 13px; 
+    letter-spacing: 1px; 
+    text-transform: uppercase; 
+    color: #666; 
+    transition: 0.3s; 
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.tab-btn:hover, .tab-btn.active { color: var(--gold); }
+
+.tab-content { 
+    display: none; 
+    animation: fadeIn 0.4s ease; 
+    padding: 10px 0; 
+    color: #ccc; 
+    line-height: 1.6; 
+}
+.tab-content.active { display: block; }
+.tab-content h4 { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 400; }
+.tab-content p, .tab-content div { font-size: 1rem; color: #ddd; }
+.tab-content img { 
+    max-width: 100%; 
+    border-radius: 8px; 
+    margin-top: 15px; 
+    border: 1px solid #333; 
+    width: 100%; 
+    height: auto; 
+}
+
+.story-text { 
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+    color: #ddd; 
+    margin-top: 40px; 
+    border-top: 1px solid #222; 
+    padding-top: 30px; 
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }

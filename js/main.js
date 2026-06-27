@@ -123,36 +123,55 @@ async function loadStory(file) {
         let html = await res.text();
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
+        
         const titleText = tempDiv.querySelector('h1.world-title')?.innerHTML || 'Untitled';
         const metaText = tempDiv.querySelector('.world-meta')?.innerHTML || '';
         const storyText = tempDiv.querySelector('.story-text')?.innerHTML || '';
+        
         const placeBlock = tempDiv.querySelector('.place-block');
         const starBlock = tempDiv.querySelector('.star-block');
         const linkBlock = tempDiv.querySelector('.link-block');
 
-        let newHtml = `<div class="world-detail"><h1 class="world-title">${titleText}</h1><div class="world-meta">${metaText}</div><div class="tabs-nav" id="tabs-container">`;
+        let newHtml = `
+            <div class="world-detail">
+                <h1 class="world-title">${titleText}</h1>
+                <div class="world-meta">${metaText}</div>
+                
+                <div class="tabs-nav" id="tabs-container">
+        `;
+
         if (placeBlock) newHtml += `<div class="tab-btn" data-tab="place">Place</div>`;
         if (starBlock) newHtml += `<div class="tab-btn" data-tab="star">Star</div>`;
         if (linkBlock) newHtml += `<div class="tab-btn" data-tab="link">Link</div>`;
+
         newHtml += `</div>`;
+
         if (placeBlock) newHtml += `<div class="tab-content" id="tab-place">${placeBlock.innerHTML}</div>`;
         if (starBlock) newHtml += `<div class="tab-content" id="tab-star">${starBlock.innerHTML}</div>`;
         if (linkBlock) newHtml += `<div class="tab-content" id="tab-link">${linkBlock.innerHTML}</div>`;
-        newHtml += `<div class="story-text">${storyText}</div></div>`;
+
+        newHtml += `
+                <div class="story-text">${storyText}</div>
+            </div>
+        `;
+
         stageBody.innerHTML = newHtml;
 
         const tabsContainer = document.getElementById('tabs-container');
         if (tabsContainer) {
             const tabs = tabsContainer.querySelectorAll('.tab-btn');
             const contents = document.querySelectorAll('.tab-content');
+
             if (tabs.length > 0 && contents.length > 0) {
                 tabs[0].classList.add('active');
                 contents[0].classList.add('active');
             }
+
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     tabs.forEach(t => t.classList.remove('active'));
                     contents.forEach(c => c.classList.remove('active'));
+
                     this.classList.add('active');
                     const targetId = `tab-${this.dataset.tab}`;
                     const targetContent = document.getElementById(targetId);
@@ -160,6 +179,7 @@ async function loadStory(file) {
                 });
             });
         }
+
         backBtn.innerHTML = '← Back to Collection';
         backBtn.onclick = () => navigateTo('collection');
         contentStage.style.opacity = '1';

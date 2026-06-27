@@ -126,7 +126,7 @@ nav {
 }
 
 /* ========================================== */
-/* КНОПКИ СНИЗУ */
+/* КНОПКИ СНИЗУ (Sources/Favorites) */
 /* ========================================== */
 .bottom-links {
     display: grid;
@@ -167,7 +167,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ */
+/* ОВЕРЛЕЙ (Общий контейнер) */
 /* ========================================== */
 #content-stage { position: fixed; inset: 0; background: rgba(8,8,8,0.98); z-index: 500; display: none; flex-direction: column; opacity: 0; transition: opacity 0.4s; }
 #content-stage.open { display: flex; opacity: 1; }
