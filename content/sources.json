@@ -1,6 +1,6 @@
 [
-  { "id": "playlist", "title": "Playlist", "file": "playlist.html", "image": "playlist.jpg", "desc": "The blueprint of my soul." },
-  { "id": "cinema",   "title": "Cinema",   "file": "cinema.html",   "image": "cinema.jpg",   "desc": "Waking dreams on screen." },
-  { "id": "tvshows",  "title": "TV-shows",  "file": "tvshows.html",  "image": "tvshows.jpg",  "desc": "Series that stay with me." },
-  { "id": "places",   "title": "Places",   "file": "places.html",   "image": "places.jpg",   "desc": "Homes from another life." }
+  { "id": "playlist", "title": "Playlist", "file": "playlist.html", "image": "playlist.jpg" },
+  { "id": "cinema",   "title": "Cinema",   "file": "cinema.html",   "image": "cinema.jpg" },
+  { "id": "tvshows",  "title": "TV-shows",  "file": "tvshows.html",  "image": "tvshows.jpg" },
+  { "id": "places",   "title": "Places",   "file": "places.html",   "image": "places.jpg" }
 ]
