@@ -1,22 +1,6 @@
 [
-  {
-    "id": "food",
-    "title": "Food",
-    "text": "Sushi, iced americano and chocolate - my diet."
-  },
-  {
-    "id": "flower",
-    "title": "Flower",
-    "text": "Orange roses."
-  },
-  {
-    "id": "perfume",
-    "title": "Perfume",
-    "text": "Eros by Nina Ricci."
-  },
-  {
-    "id": "time",
-    "title": "Time",
-    "text": "Night and mornings."
-  }
+  { "id": "food",    "title": "Food",    "file": "food.html",    "image": "food.jpg",    "desc": "Taste is memory. Every bite carries a story of where I've been." },
+  { "id": "flower",  "title": "Flower",  "file": "flower.html",  "image": "flower.jpg",  "desc": "The earth's silent poetry. These are the ones that speak to me." },
+  { "id": "perfume", "title": "Perfume", "file": "perfume.html", "image": "perfume.jpg", "desc": "Scent is emotion. These bottles hold my history." },
+  { "id": "time",    "title": "Time",    "file": "time.html",    "image": "time.jpg",    "desc": "The season, the hour, the moment. This is where I find stillness." }
 ]

@@ -18,18 +18,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderHeroBlocks() {
+    // SOURCES
     const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
-        sourcesGrid.innerHTML = SOURCES.map(item => 
-            `<button class="box-btn" onclick="openSourcePost('source', '${item.id}')">${item.title}</button>`
-        ).join('');
+        sourcesGrid.innerHTML = SOURCES.map(item => `
+            <div class="source-item" onclick="openPost('posts/${item.file}')">
+                <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
+                <div class="title">${item.title}</div>
+                <div class="desc">${item.desc || 'Click to read more'}</div>
+            </div>
+        `).join('');
     }
 
+    // FAVORITES (Журнальный стиль)
     const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
-        favGrid.innerHTML = FAVORITES.map(item => 
-            `<button class="box-btn" onclick="openSourcePost('favorite', '${item.id}')">${item.title}</button>`
-        ).join('');
+        favGrid.innerHTML = FAVORITES.map(item => `
+            <div class="magazine-item" onclick="openPost('posts/${item.file}')">
+                <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
+                <div class="content">
+                    <h3>${item.title}</h3>
+                    <p>${item.desc || 'Click to read more'}</p>
+                </div>
+            </div>
+        `).join('');
     }
 }
 
@@ -69,6 +81,7 @@ function closeStage() {
 }
 
 async function loadLists() {
+    // ---- COLLECTION ----
     const storiesRes = await fetch('stories/list.json');
     const storyFiles = await storiesRes.json();
 
@@ -95,6 +108,7 @@ async function loadLists() {
     }
     window._cachedStoriesHTML = storiesHtml;
 
+    // ---- LAB ----
     const essaysRes = await fetch('essays/list.json');
     const essayFiles = await essaysRes.json();
 
@@ -197,25 +211,12 @@ async function loadEssay(file) {
     }, 300);
 }
 
-function openSourcePost(type, id) {
-    let item = null;
-    if (type === 'source') {
-        item = SOURCES.find(s => s.id === id);
-    } else {
-        item = FAVORITES.find(s => s.id === id);
-    }
-
-    if (!item) return;
-
+async function openPost(file) {
     contentStage.style.opacity = '0';
     contentStage.classList.add('open');
-    setTimeout(() => {
-        stageBody.innerHTML = `
-            <div style="max-width:700px; margin:0 auto;">
-                <h1 class="world-title" style="font-size:2.5rem;">${item.title}</h1>
-                <div class="story-text">${item.text}</div>
-            </div>
-        `;
+    setTimeout(async () => {
+        const res = await fetch(`posts/${file}`);
+        stageBody.innerHTML = await res.text();
         backBtn.style.display = 'flex';
         backBtn.innerHTML = '← Back to Home';
         backBtn.onclick = closeStage;

@@ -1,22 +1,6 @@
 [
-  {
-    "id": "playlist",
-    "title": "Playlist",
-    "text": "My ultimately favourite musicians."
-  },
-  {
-    "id": "cinema",
-    "title": "Cinema",
-    "text": "Movies i can rewatch and quote anytime."
-  },
-  {
-    "id": "tvshows",
-    "title": "TV-shows",
-    "text": "Underrated masterpieces and main stream beloved."
-  },
-  {
-    "id": "places",
-    "title": "Places",
-    "text": "Countries and cities that feel like home from another life. "
-  }
+  { "id": "playlist", "title": "Playlist", "file": "playlist.html", "image": "playlist.jpg", "desc": "The blueprint of my soul." },
+  { "id": "cinema",   "title": "Cinema",   "file": "cinema.html",   "image": "cinema.jpg",   "desc": "Waking dreams on screen." },
+  { "id": "tvshows",  "title": "TV-shows",  "file": "tvshows.html",  "image": "tvshows.jpg",  "desc": "Series that stay with me." },
+  { "id": "places",   "title": "Places",   "file": "places.html",   "image": "places.jpg",   "desc": "Homes from another life." }
 ]
