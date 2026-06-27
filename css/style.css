@@ -91,7 +91,7 @@ nav {
 #app { padding-top: 100px; }
 
 /* ========================================== */
-/* ГЛАВНАЯ СТРАНИЦА (ЖУРНАЛЬНЫЙ СТИЛЬ) */
+/* ГЛАВНАЯ СТРАНИЦА */
 /* ========================================== */
 #main-stage { display: none; padding: 60px 10vw; }
 #main-stage.active-section { display: block; }
@@ -128,7 +128,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОБЩИЕ БЛОКИ (Sources & Favorites) */
+/* ОБЩИЕ БЛОКИ */
 /* ========================================== */
 .section-block {
     margin-bottom: 80px;
@@ -144,7 +144,7 @@ nav {
 }
 
 /* ========================================== */
-/* SOURCES (Маленькие картинки + текст) */
+/* SOURCES (Картинки в 2 раза меньше по высоте) */
 /* ========================================== */
 .sources-grid {
     display: grid;
@@ -162,10 +162,10 @@ nav {
 }
 .source-item .img-box {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9; /* Сделал низкими, как на референсе */
     background-size: cover;
     background-position: center;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-bottom: 12px;
     border: 1px solid #333;
 }
@@ -183,16 +183,16 @@ nav {
 }
 
 /* ========================================== */
-/* FAVORITES (Журнальный стиль с картинками) */
+/* FAVORITES (Референсный журнальный лэйаут) */
 /* ========================================== */
 .magazine-grid {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 60px;
 }
 .magazine-item {
     display: grid;
-    grid-template-columns: 1fr 1.2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
     cursor: pointer;
@@ -201,12 +201,21 @@ nav {
 .magazine-item:hover {
     opacity: 0.9;
 }
+
+/* Чередование: если блок четный, картинка справа */
+.magazine-item:nth-child(even) {
+    direction: rtl; /* Разворачиваем контейнер */
+}
+.magazine-item:nth-child(even) .content {
+    direction: ltr; /* Возвращаем текст в нормальное положение */
+}
+
 .magazine-item .img-box {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10; /* Пропорция как в журнале */
     background-size: cover;
     background-position: center;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 1px solid #333;
 }
 .magazine-item .content {
@@ -229,7 +238,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ (Collection, Lab и т.д.) */
+/* ОВЕРЛЕЙ (Остальные страницы) */
 /* ========================================== */
 #content-stage { 
     position: fixed; inset: 0; background: rgba(8,8,8,0.98); 
@@ -269,7 +278,7 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     .hero-slogan .hand { font-size: 3rem; }
     
     .sources-grid { grid-template-columns: 1fr 1fr; }
-    .magazine-item { grid-template-columns: 1fr; gap: 20px; }
+    .magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }
     .magazine-item .content h3 { font-size: 2.2rem; }
     .stage-scroll { padding: 20px; }
 }

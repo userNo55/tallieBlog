@@ -22,7 +22,7 @@ function renderHeroBlocks() {
     const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = SOURCES.map(item => `
-            <div class="source-item" onclick="openPost('posts/${item.file}')">
+            <div class="source-item" onclick="openPost('${item.file}')">
                 <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
                 <div class="title">${item.title}</div>
                 <div class="desc">${item.desc || 'Click to read more'}</div>
@@ -30,11 +30,11 @@ function renderHeroBlocks() {
         `).join('');
     }
 
-    // FAVORITES (Журнальный стиль)
+    // FAVORITES
     const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
         favGrid.innerHTML = FAVORITES.map(item => `
-            <div class="magazine-item" onclick="openPost('posts/${item.file}')">
+            <div class="magazine-item" onclick="openPost('${item.file}')">
                 <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
                 <div class="content">
                     <h3>${item.title}</h3>
@@ -211,12 +211,22 @@ async function loadEssay(file) {
     }, 300);
 }
 
+/* ========================================== */
+/* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
+/* ========================================== */
 async function openPost(file) {
+    // Если файл не начинается с /posts/, добавляем путь
+    const path = file.startsWith('posts/') ? file : `posts/${file}`;
+    
     contentStage.style.opacity = '0';
     contentStage.classList.add('open');
     setTimeout(async () => {
-        const res = await fetch(`posts/${file}`);
-        stageBody.innerHTML = await res.text();
+        const res = await fetch(path);
+        if (!res.ok) {
+            stageBody.innerHTML = `<div style="max-width:700px; margin:0 auto; text-align:center; color:#888; padding:40px;">Файл <b>${path}</b> не найден. Проверь папку /posts/.</div>`;
+        } else {
+            stageBody.innerHTML = await res.text();
+        }
         backBtn.style.display = 'flex';
         backBtn.innerHTML = '← Back to Home';
         backBtn.onclick = closeStage;
