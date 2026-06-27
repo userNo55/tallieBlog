@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TALLIE</title>
+    
+    <!-- ГЛОБАЛЬНЫЕ СТИЛИ (Трогаю только их) -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- СПЕЦИФИЧНЫЕ СТИЛИ СТРАНИЦ (НИКОГДА НЕ ТРОГАЮ) -->
+    <link rel="stylesheet" href="css/collection.css">
+    <link rel="stylesheet" href="css/lab.css">
+    
     <script src="js/main.js" defer></script>
 </head>
 <body>
     <nav>
-        <!-- Логотип TALLIE; GOD с голубым свечением -->
         <div class="logo" data-nav="main">TALLIE; GOD</div>
-        
         <ul class="nav-links">
             <li data-nav="main">About Tallie</li>
             <li data-nav="collection">Collection</li>
@@ -22,7 +27,7 @@
     </nav>
 
     <div id="app">
-        <!-- ГЛАВНАЯ СТРАНИЦА -->
+        <!-- ГЛАВНАЯ -->
         <section id="main-stage" class="active-section">
             <div class="hero-content">
                 <div class="hero-slogan">
@@ -37,13 +42,11 @@
                 </div>
             </div>
 
-            <!-- КНОПКИ СНИЗУ -->
             <div class="bottom-links">
                 <div class="sources-section">
                     <div class="section-label">SOURCES OF MAGIC</div>
                     <div class="grid-2x2" id="sources-grid"></div>
                 </div>
-
                 <div class="favorites-section">
                     <div class="section-label">FAVORITES</div>
                     <div class="grid-2x2" id="favorites-grid"></div>
