@@ -103,7 +103,7 @@ nav {
 .hero-slogan {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 6px;
     margin-top: 20px;
 }
 .hero-slogan .line {
