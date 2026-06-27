@@ -72,8 +72,14 @@ function closeStage() {
     }, 400);
 }
 
+// ==============================================================
+// АВТОМАТИЧЕСКАЯ ЗАГРУЗКА ИЗ ПАПОК (БЕЗ РУЧНОГО ПЕРЕЧИСЛЕНИЯ)
+// ==============================================================
 async function loadLists() {
-    const storyFiles = ['born-fire.html', 'cynical.html'];
+    // 1. Загружаем список историй из JSON файла
+    const listRes = await fetch('stories/list.json');
+    const storyFiles = await listRes.json();
+
     let storiesHtml = '';
     for (let i = 0; i < storyFiles.length; i++) {
         const file = storyFiles[i];
@@ -97,6 +103,7 @@ async function loadLists() {
     }
     window._cachedStoriesHTML = storiesHtml;
 
+    // 2. Загружаем эссе (тоже можно через JSON, но пока оставляем списком)
     const essayFiles = ['social.html', 'writing.html'];
     let essaysHtml = '';
     for (const file of essayFiles) {
