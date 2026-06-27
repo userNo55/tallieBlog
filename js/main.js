@@ -7,7 +7,6 @@ let SOURCES = [];
 let FAVORITES = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // Загружаем тексты из JSON файлов
     const sourcesRes = await fetch('content/sources.json');
     SOURCES = await sourcesRes.json();
 
@@ -70,7 +69,6 @@ function closeStage() {
 }
 
 async function loadLists() {
-    // --- Истории ---
     const storiesRes = await fetch('stories/list.json');
     const storyFiles = await storiesRes.json();
 
@@ -97,7 +95,6 @@ async function loadLists() {
     }
     window._cachedStoriesHTML = storiesHtml;
 
-    // --- Эссе ---
     const essaysRes = await fetch('essays/list.json');
     const essayFiles = await essaysRes.json();
 

@@ -126,7 +126,7 @@ nav {
 }
 
 /* ========================================== */
-/* КНОПКИ СНИЗУ (Sources/Favorites) */
+/* КНОПКИ СНИЗУ */
 /* ========================================== */
 .bottom-links {
     display: grid;
@@ -167,11 +167,75 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ (Общий контейнер) */
+/* ОВЕРЛЕЙ (Глобальный контейнер) */
 /* ========================================== */
-#content-stage { position: fixed; inset: 0; background: rgba(8,8,8,0.98); z-index: 500; display: none; flex-direction: column; opacity: 0; transition: opacity 0.4s; }
+#content-stage { 
+    position: fixed; inset: 0; background: rgba(8,8,8,0.98); 
+    z-index: 500; display: none; flex-direction: column; 
+    opacity: 0; transition: opacity 0.4s; 
+}
 #content-stage.open { display: flex; opacity: 1; }
 .stage-header { padding: 100px 60px 20px; display: flex; justify-content: flex-end; border-bottom: 1px solid #222; }
 .back-btn { background: transparent; border: none; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
 .back-btn:hover { color: var(--gold); }
-.stage-scroll { overflow-y: auto; padding: 30px 60px 100px; max-width: 1200px; width: 100%; margin: 0 auto; }
+
+/* ========================================== */
+/* ГЛОБАЛЬНЫЙ ТЕМНЫЙ СКРОЛЛБАР ДЛЯ ВСЕХ СТРАНИЦ */
+/* ========================================== */
+/* Основной контейнер скролла */
+.stage-scroll { 
+    overflow-y: auto; 
+    padding: 30px 60px 100px; 
+    max-width: 1200px; 
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.stage-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.stage-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.stage-scroll::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+.stage-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Firefox */
+.stage-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+/* Заодно убираем дефолтный белый скроллбар на всей странице */
+body {
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+body::-webkit-scrollbar {
+    width: 6px;
+}
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+/* ========================================== */
+/* МЕДИАЗАПРОСЫ */
+/* ========================================== */
+@media (max-width: 900px) {
+    .bottom-links { grid-template-columns: 1fr; gap: 30px; }
+    nav { padding: 15px 20px; }
+    .nav-links { gap: 20px; }
+    .hero-slogan .line { font-size: 2.2rem; }
+    .hero-slogan .hand { font-size: 2.8rem; }
+    .stage-scroll { padding: 20px; }
+}
