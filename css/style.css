@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
 
+/* ПОДКЛЮЧЕНИЕ ВАШИХ ШРИФТОВ */
+@font-face {
+    font-family: 'DRP Decor';
+    src: url('/fonts/drpodecorru3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TWCen MT';
+    src: url('/fonts/tw-cen-mt-condensed-extra-bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'BLACKHAWK';
     src: url('/fonts/BLACKHAWK Italic.ttf') format('truetype');
@@ -21,6 +36,8 @@
     --dark: #080808; 
     --grey: #aaa; 
 }
+
+/* ОСТАЛЬНОЙ ВАШ КОД БЕЗ ИЗМЕНЕНИЙ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif; }
 
@@ -91,7 +108,7 @@ nav {
 #app { padding-top: 100px; }
 
 /* ========================================== */
-/* ГЛАВНАЯ СТРАНИЦА */
+/* ГЛАВНАЯ СТРАНИЦА - ЗАМЕНЕН ТОЛЬКО ЭТОТ БЛОК */
 /* ========================================== */
 #main-stage { display: none; padding: 60px 10vw; }
 #main-stage.active-section { display: block; }
@@ -108,23 +125,29 @@ nav {
     flex-direction: column;
     gap: 4px;
 }
+
 .hero-slogan .line {
     font-size: 3.6rem;
     display: flex;
     align-items: center;
     gap: 12px;
 }
+
+/* ИЗМЕНЕНИЕ 1: "like crazy" */
 .hero-slogan .plain {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'DRP Decor', cursive;
     color: #f0f0f0;
-    font-weight: 300;
+    font-weight: 400;
     text-transform: lowercase;
     letter-spacing: 2px;
 }
+
+/* ИЗМЕНЕНИЕ 2: "like me" */
 .hero-slogan .hand {
-    font-family: 'BLACKHAWK', cursive;
+    font-family: 'TWCen MT', sans-serif;
     font-size: 4.8rem;
     color: var(--gold);
+    text-transform: lowercase;
 }
 
 /* ========================================== */
