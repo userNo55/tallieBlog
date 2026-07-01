@@ -1,21 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
 
-/* ПОДКЛЮЧЕНИЕ ВАШИХ ШРИФТОВ */
-@font-face {
-    font-family: 'DRP Decor';
-    src: url('/fonts/drpodecorru3.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'TWCen MT';
-    src: url('/fonts/tw-cen-mt-condensed-extra-bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'BLACKHAWK';
     src: url('/fonts/BLACKHAWK Italic.ttf') format('truetype');
@@ -30,14 +15,29 @@
     font-style: normal;
 }
 
+/* ========================================== */
+/* ТВОИ НОВЫЕ ШРИФТЫ */
+/* ========================================== */
+@font-face {
+    font-family: 'TW Cen MT';
+    src: url('/fonts/tw-cen-mt-condensed-extra-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DrpoDecor';
+    src: url('/fonts/drpodecorru3.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root { 
     --gold: #a98648; 
     --neon: #00D4FF; 
     --dark: #080808; 
     --grey: #aaa; 
 }
-
-/* ОСТАЛЬНОЙ ВАШ КОД БЕЗ ИЗМЕНЕНИЙ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif; }
 
@@ -108,7 +108,7 @@ nav {
 #app { padding-top: 100px; }
 
 /* ========================================== */
-/* ГЛАВНАЯ СТРАНИЦА - ЗАМЕНЕН ТОЛЬКО ЭТОТ БЛОК */
+/* ГЛАВНАЯ СТРАНИЦА */
 /* ========================================== */
 #main-stage { display: none; padding: 60px 10vw; }
 #main-stage.active-section { display: block; }
@@ -120,34 +120,33 @@ nav {
     padding-top: 20px;
 }
 
+/* ========================================== */
+/* СЛОГАН С ТВОИМИ ШРИФТАМИ */
+/* ========================================== */
 .hero-slogan {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
-
 .hero-slogan .line {
     font-size: 3.6rem;
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
-/* ИЗМЕНЕНИЕ 1: "like crazy" */
+/* Write - TW Cen MT */
 .hero-slogan .plain {
-    font-family: 'DRP Decor', cursive;
+    font-family: 'TW Cen MT', sans-serif;
     color: #f0f0f0;
-    font-weight: 400;
-    text-transform: lowercase;
+    font-weight: 700;
+    text-transform: uppercase;
     letter-spacing: 2px;
 }
-
-/* ИЗМЕНЕНИЕ 2: "like me" */
+/* like crazy. / like me. - DrpoDecor */
 .hero-slogan .hand {
-    font-family: 'TWCen MT', sans-serif;
+    font-family: 'DrpoDecor', cursive;
     font-size: 4.8rem;
     color: var(--gold);
-    text-transform: lowercase;
 }
 
 /* ========================================== */
@@ -167,7 +166,7 @@ nav {
 }
 
 /* ========================================== */
-/* SOURCES (Картинки в 2 раза меньше по высоте) */
+/* SOURCES (Картинки 16:9) */
 /* ========================================== */
 .sources-grid {
     display: grid;
@@ -185,7 +184,7 @@ nav {
 }
 .source-item .img-box {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Сделал низкими, как на референсе */
+    aspect-ratio: 16 / 9;
     background-size: cover;
     background-position: center;
     border-radius: 4px;
@@ -206,7 +205,7 @@ nav {
 }
 
 /* ========================================== */
-/* FAVORITES (Референсный журнальный лэйаут) */
+/* FAVORITES (Журнальная сетка) */
 /* ========================================== */
 .magazine-grid {
     display: flex;
@@ -225,17 +224,16 @@ nav {
     opacity: 0.9;
 }
 
-/* Чередование: если блок четный, картинка справа */
 .magazine-item:nth-child(even) {
-    direction: rtl; /* Разворачиваем контейнер */
+    direction: rtl;
 }
 .magazine-item:nth-child(even) .content {
-    direction: ltr; /* Возвращаем текст в нормальное положение */
+    direction: ltr;
 }
 
 .magazine-item .img-box {
     width: 100%;
-    aspect-ratio: 16 / 10; /* Пропорция как в журнале */
+    aspect-ratio: 16 / 10;
     background-size: cover;
     background-position: center;
     border-radius: 6px;
@@ -261,7 +259,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ (Остальные страницы) */
+/* ОВЕРЛЕЙ */
 /* ========================================== */
 #content-stage { 
     position: fixed; inset: 0; background: rgba(8,8,8,0.98); 
