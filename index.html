@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TALLIE</title>
     
-    <!-- ГЛОБАЛЬНЫЕ СТИЛИ (Навигация, Hero, Журнальный стиль) -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ LAB (ВОТ ЭТА СТРОКА БЫЛА ПОТЕРЯНА) -->
     <link rel="stylesheet" href="css/lab.css">
-    
-    <!-- СТИЛИ ДЛЯ COLLECTION (Если есть) -->
     <link rel="stylesheet" href="css/collection.css">
     
     <script src="js/main.js" defer></script>
@@ -29,7 +24,7 @@
     </nav>
 
     <div id="app">
-        <!-- HERO СЕКЦИЯ (Твой слоган, без кнопок) -->
+        <!-- HERO СЕКЦИЯ -->
         <section id="main-stage" class="active-section">
             
             <div class="hero-wrapper">
@@ -45,21 +40,27 @@
                 </div>
             </div>
 
-            <!-- FAVORITES (Журнальный стиль: картинки + текст) -->
+            <!-- ============================================================ -->
+            <!-- 1. FAVORITES (СВЕРХУ, журнальный стиль) -->
+            <!-- ============================================================ -->
             <div class="section-block favorites-block">
                 <div class="section-label">FAVORITES</div>
-                <div class="sources-grid" id="sources-grid"></div>
+                <div class="magazine-grid" id="favorite-grid"></div>
             </div>
 
-            <!-- SOURCES OF MAGIC (Маленькие картинки + текст) -->
+            <!-- ============================================================ -->
+            <!-- 2. SOURCES (СНИЗУ) -->
+            <!-- ============================================================ -->
             <div class="section-block sources-block">
                 <div class="section-label">SOURCES OF MAGIC</div>
-                <div class="magazine-grid" id="favorites-grid"></div>
+                <div class="sources-grid" id="source-grid"></div>
             </div>
 
         </section>
 
+        <!-- ============================================================ -->
         <!-- ОВЕРЛЕЙ (Страницы Collection, Lab и т.д.) -->
+        <!-- ============================================================ -->
         <div id="content-stage">
             <div class="stage-header">
                 <button class="back-btn" id="back-btn" style="display:none;">← Close</button>
