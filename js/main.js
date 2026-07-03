@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderHeroBlocks() {
-    // FAVORITES (Выводим наверх в сетку в ряд)
+    // FAVORITES (В ряд сверху)
     const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = FAVORITES.map(item => `
@@ -30,7 +30,7 @@ function renderHeroBlocks() {
         `).join('');
     }
 
-    // SOURCES OF MAGIC (Выводим вниз в журнальную разметку)
+    // SOURCES OF MAGIC (Журнальный стиль снизу)
     const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
         favGrid.innerHTML = SOURCES.map(item => `
@@ -63,7 +63,7 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     backBtn.style.display = 'flex';
-    backBtn.innerHTML = '✕'; // Крестик закрытия для страниц меню
+    backBtn.innerHTML = '✕'; 
     backBtn.onclick = closeStage;
 
     document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
@@ -176,8 +176,8 @@ async function loadStory(file) {
             const contents = document.querySelectorAll('.tab-content');
 
             if (tabs.length > 0 && contents.length > 0) {
-                tabs[0].classList.add('active');
-                contents[0].classList.add('active');
+                tabs.classList.add('active');
+                contents.classList.add('active');
             }
 
             tabs.forEach(tab => {
@@ -193,7 +193,7 @@ async function loadStory(file) {
             });
         }
 
-        backBtn.innerHTML = '✕'; // Изменили стрелку назад на крестик
+        backBtn.innerHTML = '✕'; 
         backBtn.onclick = () => navigateTo('collection');
         contentStage.style.opacity = '1';
     }, 300);
@@ -204,7 +204,7 @@ async function loadEssay(file) {
     setTimeout(async () => {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
-        backBtn.innerHTML = '✕'; // Изменили стрелку назад на крестик
+        backBtn.innerHTML = '✕'; 
         backBtn.onclick = () => navigateTo('lab');
         contentStage.style.opacity = '1';
     }, 300);
@@ -214,7 +214,6 @@ async function loadEssay(file) {
 /* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
 /* ========================================== */
 async function openPost(file) {
-    // Восстановленный оригинальный поиск файлов в папке /posts/
     const path = file.startsWith('posts/') ? file : `posts/${file}`;
     contentStage.style.opacity = '0';
     contentStage.classList.add('open');
@@ -226,9 +225,12 @@ async function openPost(file) {
         } else {
             stageBody.innerHTML = await res.text();
         }
+        
+        // Гарантированно показываем и вешаем клик закрытия
         backBtn.style.display = 'flex';
-        backBtn.innerHTML = '✕'; // Заменили "← Back to Home" на лаконичный крестик закрытия
-        backBtn.onclick = closeStage;
+        backBtn.innerHTML = '✕'; 
+        backBtn.onclick = closeStage; 
+        
         contentStage.style.opacity = '1';
     }, 300);
 }

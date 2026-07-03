@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap');
+@import url('https://googleapis.com');
+@import url('https://googleapis.com');
 
 @font-face {
     font-family: 'BLACKHAWK';
@@ -29,7 +29,7 @@
     font-style: normal;
 }
 /* ========================================== */
-/* ТВОИ НОВЫЕ ШРИФТЫ */
+/* ШРИФТЫ */
 /* ========================================== */
 @font-face {
     font-family: 'TW Cen MT';
@@ -134,7 +134,7 @@ nav {
 }
 
 /* ========================================== */
-/* СЛОГАН С ТВОИМИ ШРИФТАМИ */
+/* СЛОГАН */
 /* ========================================== */
 .hero-slogan {
     display: flex;
@@ -147,7 +147,6 @@ nav {
     align-items: center;
     gap: 12px;
 }
-/* Write - TW Cen MT */
 .hero-slogan .plain {
     font-family: 'TW Cen MT', sans-serif;
     color: #f0f0f0;
@@ -155,7 +154,6 @@ nav {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-/* like crazy. / like me. - DrpoDecor */
 .hero-slogan .hand {
     font-family: 'DrpoDecor', cursive;
     font-size: 4.8rem;
@@ -179,7 +177,7 @@ nav {
 }
 
 /* ========================================== */
-/* SOURCES (Картинки 16:9) */
+/* SOURCES (Картинки 16:9 в ряд) */
 /* ========================================== */
 .sources-grid {
     display: grid;
@@ -209,6 +207,7 @@ nav {
     font-family: 'DrpoDecor', serif;
     color: #fff;
     margin-bottom: 6px;
+    font-weight: normal;
 }
 .source-item .desc {
     font-size: 0.85rem;
@@ -235,14 +234,12 @@ nav {
 .magazine-item:hover {
     opacity: 0.9;
 }
-
 .magazine-item:nth-child(even) {
     direction: rtl;
 }
 .magazine-item:nth-child(even) .content {
     direction: ltr;
 }
-
 .magazine-item .img-box {
     width: 100%;
     aspect-ratio: 16 / 10;
@@ -261,7 +258,7 @@ nav {
     font-size: 2.4rem;
     color: #fff;
     line-height: 1.1;
-    font-weight: normal;
+    font-weight: normal; /* Фикс ложной жирности */
 }
 .magazine-item .content p {
     font-size: 1rem;
@@ -271,7 +268,7 @@ nav {
 }
 
 /* ========================================== */
-/* ОВЕРЛЕЙ */
+/* ОВЕРЛЕЙ И КРЕСТИК ЗАКРЫТИЯ */
 /* ========================================== */
 #content-stage { 
     position: fixed; inset: 0; background: rgba(8,8,8,0.98); 
@@ -280,8 +277,26 @@ nav {
 }
 #content-stage.open { display: flex; opacity: 1; }
 .stage-header { padding: 100px 60px 20px; display: flex; justify-content: flex-end; border-bottom: 1px solid #222; }
-.back-btn { background: transparent; border: none; color: #888; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
-.back-btn:hover { color: var(--gold); }
+
+/* Принудительно выбиваем крестик на самый верхний слой, чтобы контент его не перекрывал */
+#back-btn { 
+    position: fixed !important;
+    top: 30px !important;
+    right: 60px !important;
+    background: transparent !important; 
+    border: none !important; 
+    color: #888 !important; 
+    font-size: 32px !important; 
+    cursor: pointer !important; 
+    z-index: 99999 !important; 
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.3s, transform 0.3s;
+}
+#back-btn:hover { color: var(--gold) !important; transform: scale(1.1); }
 
 .stage-scroll { 
     overflow-y: auto; 
@@ -314,4 +329,5 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     .magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }
     .magazine-item .content h3 { font-size: 2.2rem; }
     .stage-scroll { padding: 20px; }
+    #back-btn { top: 15px !important; right: 20px !important; font-size: 28px !important; }
 }
