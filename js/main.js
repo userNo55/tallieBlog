@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderHeroBlocks() {
-    // SOURCES
+    // FAVORITES (Выводим наверх в сетку 4 в ряд)
     const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
-        sourcesGrid.innerHTML = SOURCES.map(item => `
+        sourcesGrid.innerHTML = FAVORITES.map(item => `
             <div class="source-item" onclick="openPost('${item.file}')">
                 <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
                 <div class="title">${item.title}</div>
@@ -30,10 +30,10 @@ function renderHeroBlocks() {
         `).join('');
     }
 
-    // FAVORITES
+    // SOURCES OF MAGIC (Выводим вниз в журнальную разметку)
     const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
-        favGrid.innerHTML = FAVORITES.map(item => `
+        favGrid.innerHTML = SOURCES.map(item => `
             <div class="magazine-item" onclick="openPost('${item.file}')">
                 <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
                 <div class="content">
@@ -150,7 +150,6 @@ async function loadStory(file) {
             <div class="world-detail">
                 <h1 class="world-title">${titleText}</h1>
                 <div class="world-meta">${metaText}</div>
-                
                 <div class="tabs-nav" id="tabs-container">
         `;
 
@@ -207,29 +206,6 @@ async function loadEssay(file) {
         stageBody.innerHTML = await res.text();
         backBtn.innerHTML = '← Back to Lab';
         backBtn.onclick = () => navigateTo('lab');
-        contentStage.style.opacity = '1';
-    }, 300);
-}
-
-/* ========================================== */
-/* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
-/* ========================================== */
-async function openPost(file) {
-    // Если файл не начинается с /posts/, добавляем путь
-    const path = file.startsWith('posts/') ? file : `posts/${file}`;
-    
-    contentStage.style.opacity = '0';
-    contentStage.classList.add('open');
-    setTimeout(async () => {
-        const res = await fetch(path);
-        if (!res.ok) {
-            stageBody.innerHTML = `<div style="max-width:700px; margin:0 auto; text-align:center; color:#888; padding:40px;">Файл <b>${path}</b> не найден. Проверь папку /posts/.</div>`;
-        } else {
-            stageBody.innerHTML = await res.text();
-        }
-        backBtn.style.display = 'flex';
-        backBtn.innerHTML = '← Back to Home';
-        backBtn.onclick = closeStage;
         contentStage.style.opacity = '1';
     }, 300);
 }
