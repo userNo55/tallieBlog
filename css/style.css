@@ -206,7 +206,7 @@ nav {
 }
 .source-item .title {
     font-size: 1.2rem;
-    font-family: 'Playfair Display', serif;
+    font-family: 'DrpoDecor', serif;
     font-style: italic;
     color: #fff;
     margin-bottom: 6px;
@@ -258,7 +258,7 @@ nav {
     gap: 15px;
 }
 .magazine-item .content h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'DrpoDecor', serif;
     font-style: italic;
     font-size: 2.8rem;
     color: #fff;
