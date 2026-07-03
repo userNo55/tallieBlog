@@ -22,6 +22,12 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Tw Cen MT regular';
+    src: url('/fonts/Tw Cen MT Condensed Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* ========================================== */
 /* ТВОИ НОВЫЕ ШРИФТЫ */
 /* ========================================== */
@@ -46,7 +52,7 @@
     --grey: #aaa; 
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--dark); color: #f0f0f0; font-family: 'Inter', sans-serif; }
+body { background: var(--dark); color: #f0f0f0; font-family: 'Tw Cen MT regular', sans-serif; }
 
 /* ========================================== */
 /* НАВИГАЦИЯ */
