@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadLists();
 });
 
+/* ========================================== */
+/* ОТРИСОВКА ГЛАВНОЙ СТРАНИЦЫ */
+/* ========================================== */
 function renderHeroBlocks() {
-    // SOURCES
-    const sourcesGrid = document.getElementById('sources-grid');
+    // --- SOURCES (СНИЗУ) ---
+    const sourcesGrid = document.getElementById('source-grid');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = SOURCES.map(item => `
             <div class="source-item" onclick="openPost('${item.file}')">
@@ -30,21 +33,24 @@ function renderHeroBlocks() {
         `).join('');
     }
 
-    // FAVORITES
-    const favGrid = document.getElementById('favorites-grid');
+    // --- FAVORITES (СВЕРХУ) ---
+    const favGrid = document.getElementById('favorite-grid');
     if(favGrid) {
         favGrid.innerHTML = FAVORITES.map(item => `
-            <div class="magazine-item" onclick="openPost('${item.file}')">
+            <div class="magazine-item">
                 <div class="img-box" style="background-image: url('images/${item.image || 'default.jpg'}');"></div>
                 <div class="content">
                     <h3>${item.title}</h3>
-                    <p>${item.desc || 'Click to read more'}</p>
+                    <p>${item.text || ''}</p>
                 </div>
             </div>
         `).join('');
     }
 }
 
+/* ========================================== */
+/* НАВИГАЦИЯ И ОВЕРЛЕЙ */
+/* ========================================== */
 document.querySelectorAll('[data-nav]').forEach(el => {
     el.addEventListener('click', () => navigateTo(el.dataset.nav));
 });
@@ -80,6 +86,9 @@ function closeStage() {
     }, 400);
 }
 
+/* ========================================== */
+/* ЗАГРУЗКА COLLECTION / LAB */
+/* ========================================== */
 async function loadLists() {
     // ---- COLLECTION ----
     const storiesRes = await fetch('stories/list.json');
@@ -130,6 +139,9 @@ async function loadLists() {
     window._cachedEssaysHTML = essaysHtml;
 }
 
+/* ========================================== */
+/* ОТКРЫТИЕ ИСТОРИЙ И ЭССЕ */
+/* ========================================== */
 async function loadStory(file) {
     contentStage.style.opacity = '0';
     setTimeout(async () => {
@@ -212,7 +224,7 @@ async function loadEssay(file) {
 }
 
 /* ========================================== */
-/* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
+/* ОТКРЫТИЕ ПОСТОВ ИЗ SOURCES */
 /* ========================================== */
 async function openPost(file) {
     // Если файл не начинается с /posts/, добавляем путь
