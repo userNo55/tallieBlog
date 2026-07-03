@@ -16,8 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderHeroBlocks();
     loadLists();
     
-    // Гарантируем, что при первой загрузке главной страницы крестика точно нет
-    if (backBtn) backBtn.style.display = 'none';
+    if (backBtn) backBtn.classList.add('hidden');
 });
 
 function renderHeroBlocks() {
@@ -66,9 +65,8 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     
-    // Показываем крестик при переходе на внутренние страницы меню
     if(backBtn) {
-        backBtn.style.display = 'flex';
+        backBtn.classList.remove('hidden');
         backBtn.innerHTML = '✕'; 
         backBtn.onclick = closeStage;
     }
@@ -81,8 +79,7 @@ async function navigateTo(section) {
 function closeStage() {
     contentStage.style.opacity = '0';
     
-    // ПРИНУДИТЕЛЬНО ПРЯЧЕМ КРЕСТИК при возврате на главную страницу
-    if(backBtn) backBtn.style.display = 'none';
+    if(backBtn) backBtn.classList.add('hidden');
     
     setTimeout(() => {
         contentStage.classList.remove('open');
@@ -205,7 +202,7 @@ async function loadStory(file) {
         }
 
         if(backBtn) {
-            backBtn.style.display = 'flex';
+            backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = () => navigateTo('collection');
         }
@@ -219,7 +216,7 @@ async function loadEssay(file) {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
         if(backBtn) {
-            backBtn.style.display = 'flex';
+            backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = () => navigateTo('lab');
         }
@@ -243,9 +240,8 @@ async function openPost(file) {
             stageBody.innerHTML = await res.text();
         }
         
-        // Показываем крестик только при открытии всплывающего поста
         if (backBtn) {
-            backBtn.style.display = 'flex';
+            backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = closeStage; 
         }

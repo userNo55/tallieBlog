@@ -278,7 +278,7 @@ nav {
 #content-stage.open { display: flex; opacity: 1; }
 .stage-header { padding: 100px 60px 20px; display: flex; justify-content: flex-end; border-bottom: 1px solid #222; }
 
-/* КРЕСТИК В КОРНЕ BODY: Жестко фиксирован, на самом высоком слое, поверх флексбокса */
+/* КРЕСТИК В КОРНЕ BODY: Дефолтный вид при показе (flex) */
 #back-btn { 
     position: fixed !important;
     top: 40px !important;
@@ -292,7 +292,7 @@ nav {
     z-index: 999999 !important; 
     width: 50px !important;
     height: 50px !important;
-    display: flex !important;
+    display: flex; 
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.3s ease;
@@ -321,15 +321,18 @@ body::-webkit-scrollbar { width: 6px; }
 body::-webkit-scrollbar-track { background: transparent; }
 body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
-/* ========================================== */
 /* СТИЛИЗАЦИЯ ЗАГОЛОВКОВ ВНУТРИ ПОСТОВ ИЗ /posts/ */
-/* ========================================== */
 .stage-scroll h1, 
 .stage-scroll h2, 
 .stage-scroll h3 {
     font-family: 'DrpoDecor', serif !important;
     font-weight: normal !important;
     color: #fff !important;
+}
+
+/* СЛУЖЕБНЫЙ КЛАСС ЖЕЛЕЗНОГО СКРЫТИЯ КНОПКИ НА ГЛАВНОЙ СТРАНИЦЕ */
+.hidden {
+    display: none !important;
 }
 
 /* ========================================== */
