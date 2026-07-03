@@ -15,6 +15,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'uberholme';
+    src: url('/fonts/uberholme-outline1.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ========================================== */
 /* ТВОИ НОВЫЕ ШРИФТЫ */
 /* ========================================== */
@@ -56,7 +63,7 @@ nav {
 }
 
 .logo { 
-    font-family: 'Avaneonz', sans-serif;
+    font-family: 'uberholme', sans-serif;
     font-size: 64px; 
     font-weight: normal; 
     color: var(--neon); 
