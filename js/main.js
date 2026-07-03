@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     renderHeroBlocks();
     loadLists();
+    
+    // Гарантируем, что при первой загрузке главной страницы крестика точно нет
+    if (backBtn) backBtn.style.display = 'none';
 });
 
 function renderHeroBlocks() {
@@ -62,6 +65,8 @@ async function navigateTo(section) {
     if (section === 'lab') html = html.replace('{{essays}}', window._cachedEssaysHTML || '');
 
     stageBody.innerHTML = html;
+    
+    // Показываем крестик при переходе на внутренние страницы меню
     if(backBtn) {
         backBtn.style.display = 'flex';
         backBtn.innerHTML = '✕'; 
@@ -75,11 +80,14 @@ async function navigateTo(section) {
 
 function closeStage() {
     contentStage.style.opacity = '0';
+    
+    // ПРИНУДИТЕЛЬНО ПРЯЧЕМ КРЕСТИК при возврате на главную страницу
+    if(backBtn) backBtn.style.display = 'none';
+    
     setTimeout(() => {
         contentStage.classList.remove('open');
         mainStage.classList.add('active-section');
         document.querySelector('.nav-links li.active')?.classList.remove('active');
-        if(backBtn) backBtn.style.display = 'none';
     }, 400);
 }
 
@@ -235,6 +243,7 @@ async function openPost(file) {
             stageBody.innerHTML = await res.text();
         }
         
+        // Показываем крестик только при открытии всплывающего поста
         if (backBtn) {
             backBtn.style.display = 'flex';
             backBtn.innerHTML = '✕'; 
