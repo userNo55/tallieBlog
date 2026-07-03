@@ -65,7 +65,7 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     
-    // Скрываем крестик на страницах общего меню
+    // Скрываем крестик на страницах общего меню (Collection, Lab)
     if(backBtn) {
         backBtn.classList.add('hidden');
     }
@@ -106,7 +106,8 @@ async function loadLists() {
         storiesHtml += `
             <div class="tv-card" onclick="loadStory('${file}')">
                 <div class="tv-screen" style="background-image: url('images/${id}.jpg');">
-                    <div class="vhs-lines"></div>
+                    <div class="crt-vignette"></div>
+                    <div class="crt-scanlines"></div>
                     <span class="tv-num">${num}</span>
                     <div class="tv-title-overlay">${titleHTML}</div>
                 </div>
@@ -200,7 +201,6 @@ async function loadStory(file) {
             });
         }
 
-        // Показываем крестик для возврата из конкретной истории обратно в Collection
         if(backBtn) {
             backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
@@ -216,7 +216,6 @@ async function loadEssay(file) {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
         
-        // Показываем крестик для возврата из эссе в Lab
         if(backBtn) {
             backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
@@ -226,9 +225,6 @@ async function loadEssay(file) {
     }, 300);
 }
 
-/* ========================================== */
-/* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
-/* ========================================== */
 async function openPost(file) {
     const path = file.startsWith('posts/') ? file : `posts/${file}`;
     contentStage.style.opacity = '0';
