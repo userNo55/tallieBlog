@@ -34,7 +34,7 @@
 @font-face {
     font-family: 'TW Cen MT';
     src: url('/fonts/tw-cen-mt-condensed-extra-bold.ttf') format('truetype');
-    font-weight: 700;
+    font-weight: 1400;
     font-style: normal;
 }
 
@@ -377,7 +377,7 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.85) 100%);
+    background: radial-gradient(circle, rgba(0,0,0,0) 90%, rgba(0,0,0,0.85) 100%);
     z-index: 2;
 }
 
