@@ -258,7 +258,7 @@ nav {
     font-size: 2.4rem;
     color: #fff;
     line-height: 1.1;
-    font-weight: normal; /* Фикс ложной жирности */
+    font-weight: normal; 
 }
 .magazine-item .content p {
     font-size: 1rem;
@@ -278,25 +278,30 @@ nav {
 #content-stage.open { display: flex; opacity: 1; }
 .stage-header { padding: 100px 60px 20px; display: flex; justify-content: flex-end; border-bottom: 1px solid #222; }
 
-/* Принудительно выбиваем крестик на самый верхний слой, чтобы контент его не перекрывал */
+/* КРЕСТИК: Фиксирован поверх всех окон, белый/золотой цвет */
 #back-btn { 
     position: fixed !important;
-    top: 30px !important;
-    right: 60px !important;
-    background: transparent !important; 
-    border: none !important; 
-    color: #888 !important; 
-    font-size: 32px !important; 
+    top: 40px !important;
+    right: 50px !important;
+    background: rgba(0,0,0,0.4) !important; 
+    border: 1px solid #333 !important;
+    border-radius: 50% !important;
+    color: #ffffff !important; 
+    font-size: 24px !important; 
     cursor: pointer !important; 
-    z-index: 99999 !important; 
+    z-index: 999999 !important; 
     width: 50px !important;
     height: 50px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: color 0.3s, transform 0.3s;
+    transition: all 0.3s ease;
 }
-#back-btn:hover { color: var(--gold) !important; transform: scale(1.1); }
+#back-btn:hover { 
+    color: var(--gold) !important; 
+    border-color: var(--gold) !important;
+    transform: scale(1.05); 
+}
 
 .stage-scroll { 
     overflow-y: auto; 
@@ -317,6 +322,17 @@ body::-webkit-scrollbar-track { background: transparent; }
 body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
 /* ========================================== */
+/* СТИЛИЗАЦИЯ ЗАГОЛОВКОВ ВНУТРИ ПОСТОВ ИЗ /posts/ */
+/* ========================================== */
+.stage-scroll h1, 
+.stage-scroll h2, 
+.stage-scroll h3 {
+    font-family: 'DrpoDecor', serif !important;
+    font-weight: normal !important;
+    color: #fff !important;
+}
+
+/* ========================================== */
 /* МЕДИАЗАПРОСЫ */
 /* ========================================== */
 @media (max-width: 900px) {
@@ -329,5 +345,5 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     .magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }
     .magazine-item .content h3 { font-size: 2.2rem; }
     .stage-scroll { padding: 20px; }
-    #back-btn { top: 15px !important; right: 20px !important; font-size: 28px !important; }
+    #back-btn { top: 20px !important; right: 20px !important; font-size: 20px !important; width: 40px !important; height: 40px !important; }
 }

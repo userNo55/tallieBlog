@@ -62,9 +62,11 @@ async function navigateTo(section) {
     if (section === 'lab') html = html.replace('{{essays}}', window._cachedEssaysHTML || '');
 
     stageBody.innerHTML = html;
-    backBtn.style.display = 'flex';
-    backBtn.innerHTML = '✕'; 
-    backBtn.onclick = closeStage;
+    if(backBtn) {
+        backBtn.style.display = 'block';
+        backBtn.innerHTML = '✕'; 
+        backBtn.onclick = closeStage;
+    }
 
     document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
     const activeLink = document.querySelector(`.nav-links li[data-nav="${section}"]`);
@@ -77,6 +79,7 @@ function closeStage() {
         contentStage.classList.remove('open');
         mainStage.classList.add('active-section');
         document.querySelector('.nav-links li.active')?.classList.remove('active');
+        if(backBtn) backBtn.style.display = 'none';
     }, 400);
 }
 
@@ -193,8 +196,11 @@ async function loadStory(file) {
             });
         }
 
-        backBtn.innerHTML = '✕'; 
-        backBtn.onclick = () => navigateTo('collection');
+        if(backBtn) {
+            backBtn.style.display = 'block';
+            backBtn.innerHTML = '✕'; 
+            backBtn.onclick = () => navigateTo('collection');
+        }
         contentStage.style.opacity = '1';
     }, 300);
 }
@@ -204,8 +210,11 @@ async function loadEssay(file) {
     setTimeout(async () => {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
-        backBtn.innerHTML = '✕'; 
-        backBtn.onclick = () => navigateTo('lab');
+        if(backBtn) {
+            backBtn.style.display = 'block';
+            backBtn.innerHTML = '✕'; 
+            backBtn.onclick = () => navigateTo('lab');
+        }
         contentStage.style.opacity = '1';
     }, 300);
 }
@@ -226,10 +235,11 @@ async function openPost(file) {
             stageBody.innerHTML = await res.text();
         }
         
-        // Гарантированно показываем и вешаем клик закрытия
-        backBtn.style.display = 'flex';
-        backBtn.innerHTML = '✕'; 
-        backBtn.onclick = closeStage; 
+        if (backBtn) {
+            backBtn.style.display = 'block';
+            backBtn.innerHTML = '✕'; 
+            backBtn.onclick = closeStage; 
+        }
         
         contentStage.style.opacity = '1';
     }, 300);
