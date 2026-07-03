@@ -65,10 +65,9 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     
+    // Скрываем крестик на страницах общего меню
     if(backBtn) {
-        backBtn.classList.remove('hidden');
-        backBtn.innerHTML = '✕'; 
-        backBtn.onclick = closeStage;
+        backBtn.classList.add('hidden');
     }
 
     document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
@@ -78,7 +77,6 @@ async function navigateTo(section) {
 
 function closeStage() {
     contentStage.style.opacity = '0';
-    
     if(backBtn) backBtn.classList.add('hidden');
     
     setTimeout(() => {
@@ -108,6 +106,7 @@ async function loadLists() {
         storiesHtml += `
             <div class="tv-card" onclick="loadStory('${file}')">
                 <div class="tv-screen" style="background-image: url('images/${id}.jpg');">
+                    <div class="vhs-lines"></div>
                     <span class="tv-num">${num}</span>
                     <div class="tv-title-overlay">${titleHTML}</div>
                 </div>
@@ -201,6 +200,7 @@ async function loadStory(file) {
             });
         }
 
+        // Показываем крестик для возврата из конкретной истории обратно в Collection
         if(backBtn) {
             backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 
@@ -215,6 +215,8 @@ async function loadEssay(file) {
     setTimeout(async () => {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
+        
+        // Показываем крестик для возврата из эссе в Lab
         if(backBtn) {
             backBtn.classList.remove('hidden');
             backBtn.innerHTML = '✕'; 

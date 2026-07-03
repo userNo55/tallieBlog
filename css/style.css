@@ -278,7 +278,7 @@ nav {
 #content-stage.open { display: flex; opacity: 1; }
 .stage-header { padding: 100px 60px 20px; display: flex; justify-content: flex-end; border-bottom: 1px solid #222; }
 
-/* КРЕСТИК В КОРНЕ BODY: Дефолтный вид при показе (flex) */
+/* КРЕСТИК */
 #back-btn { 
     position: fixed !important;
     top: 40px !important;
@@ -321,7 +321,7 @@ body::-webkit-scrollbar { width: 6px; }
 body::-webkit-scrollbar-track { background: transparent; }
 body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
 
-/* СТИЛИЗАЦИЯ ЗАГОЛОВКОВ ВНУТРИ ПОСТОВ ИЗ /posts/ */
+/* СТИЛИЗАЦИЯ ПОСТОВ */
 .stage-scroll h1, 
 .stage-scroll h2, 
 .stage-scroll h3 {
@@ -330,23 +330,74 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     color: #fff !important;
 }
 
-/* СЛУЖЕБНЫЙ КЛАСС ЖЕЛЕЗНОГО СКРЫТИЯ КНОПКИ НА ГЛАВНОЙ СТРАНИЦЕ */
 .hidden {
     display: none !important;
 }
 
 /* ========================================== */
-/* МЕДИАЗАПРОСЫ */
+/* СТИЛИ ДЛЯ КАРТОЧЕК VHS С СЕТКОЙ (COLLECTION) */
 /* ========================================== */
-@media (max-width: 900px) {
-    nav { padding: 15px 20px; }
-    .nav-links { gap: 20px; }
-    .hero-slogan .line { font-size: 2.2rem; }
-    .hero-slogan .hand { font-size: 3rem; }
-    
-    .sources-grid { grid-template-columns: 1fr 1fr; }
-    .magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }
-    .magazine-item .content h3 { font-size: 2.2rem; }
-    .stage-scroll { padding: 20px; }
-    #back-btn { top: 20px !important; right: 20px !important; font-size: 18px !important; width: 45px !important; height: 45px !important; }
+.tv-card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 2px solid #222;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
+.tv-card:hover {
+    transform: scale(1.02);
+    border-color: var(--gold);
+}
+.tv-screen {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: contrast(1.1) brightness(0.95);
+}
+
+/* Тот самый VHS Эффект: полосы и шум */
+.vhs-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.tv-num {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-family: 'TW Cen MT', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    z-index: 3;
+}
+
+.tv-title-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    font-family: 'DrpoDecor', serif;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    z-index: 3;
+    transition: background 0.3s ease;
+}
+.tv-card:hover .tv-title-overlay {
+    background: rgba(0,0,0,0.2);
+}
+
+/* ========================================== */
+/* МЕДИАЗАПРОСЫ */
+@media (max-width: 900px) {nav { padding: 15px 20px; }.nav-links { gap: 20px; }.hero-slogan .line { font-size: 2.2rem; }.hero-slogan .hand { font-size: 3rem; }.sources-grid { grid-template-columns: 1fr 1fr; }.magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }.magazine-item .content h3 { font-size: 2.2rem; }.stage-scroll { padding: 20px; }#back-btn { top: 20px !important; right: 20px !important; font-size: 18px !important; width: 45px !important; height: 45px !important; }}
