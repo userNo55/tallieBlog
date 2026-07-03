@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderHeroBlocks() {
-    // FAVORITES (В ряд сверху)
+    // FAVORITES (Выводим наверх в сетку в ряд)
     const sourcesGrid = document.getElementById('sources-grid');
     if(sourcesGrid) {
         sourcesGrid.innerHTML = FAVORITES.map(item => `
@@ -30,7 +30,7 @@ function renderHeroBlocks() {
         `).join('');
     }
 
-    // SOURCES OF MAGIC (Журнальный стиль снизу)
+    // SOURCES OF MAGIC (Выводим вниз в журнальную разметку)
     const favGrid = document.getElementById('favorites-grid');
     if(favGrid) {
         favGrid.innerHTML = SOURCES.map(item => `
@@ -42,37 +42,6 @@ function renderHeroBlocks() {
                 </div>
             </div>
         `).join('');
-    }
-}
-
-// ---- ФУНКЦИЯ ДЛЯ ОТКРЫТИЯ ПОСТОВ ИЗ ГЛАВНОЙ СТРАНИЦЫ ----
-async function openPost(file) {
-    if (!file) return;
-    
-    // Анимация плавного исчезновения главной
-    mainStage.classList.remove('active-section');
-    contentStage.style.opacity = '0';
-    contentStage.classList.add('open');
-    setTimeout(() => { contentStage.style.opacity = '1'; }, 50);
-
-    try {
-        // Загружаем HTML-файл страницы (например, pages/food.html или pages/cinema.html)
-        const res = await fetch(`pages/${file}`);
-        if (!res.ok) throw new Error('Файл не найден');
-        
-        const html = await res.text();
-        stageBody.innerHTML = html;
-        
-        // Настраиваем кнопку закрытия в виде крестика
-        backBtn.style.display = 'flex';
-        backBtn.innerHTML = '✕'; // Стильный крестик в углу
-        backBtn.onclick = closeStage;
-    } catch (error) {
-        console.error('Ошибка загрузки страницы:', error);
-        stageBody.innerHTML = `<div style="padding: 40px; color: var(--gold);">Страница в разработке...</div>`;
-        backBtn.style.display = 'flex';
-        backBtn.innerHTML = '✕';
-        backBtn.onclick = closeStage;
     }
 }
 
@@ -93,10 +62,8 @@ async function navigateTo(section) {
     if (section === 'lab') html = html.replace('{{essays}}', window._cachedEssaysHTML || '');
 
     stageBody.innerHTML = html;
-    
-    // При навигации из меню тоже ставим крестик для единообразия
     backBtn.style.display = 'flex';
-    backBtn.innerHTML = '✕'; 
+    backBtn.innerHTML = '✕'; // Крестик закрытия для страниц меню
     backBtn.onclick = closeStage;
 
     document.querySelectorAll('.nav-links li').forEach(li => li.classList.remove('active'));
@@ -226,7 +193,7 @@ async function loadStory(file) {
             });
         }
 
-        backBtn.innerHTML = '✕'; // Меняем на крестик при возврате в коллекцию
+        backBtn.innerHTML = '✕'; // Изменили стрелку назад на крестик
         backBtn.onclick = () => navigateTo('collection');
         contentStage.style.opacity = '1';
     }, 300);
@@ -237,8 +204,31 @@ async function loadEssay(file) {
     setTimeout(async () => {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
-        backBtn.innerHTML = '✕'; // Меняем на крестик при возврате в лабу
+        backBtn.innerHTML = '✕'; // Изменили стрелку назад на крестик
         backBtn.onclick = () => navigateTo('lab');
+        contentStage.style.opacity = '1';
+    }, 300);
+}
+
+/* ========================================== */
+/* УНИВЕРСАЛЬНАЯ ЗАГРУЗКА ДЛЯ SOURCES / FAVORITES */
+/* ========================================== */
+async function openPost(file) {
+    // Восстановленный оригинальный поиск файлов в папке /posts/
+    const path = file.startsWith('posts/') ? file : `posts/${file}`;
+    contentStage.style.opacity = '0';
+    contentStage.classList.add('open');
+    
+    setTimeout(async () => {
+        const res = await fetch(path);
+        if (!res.ok) {
+            stageBody.innerHTML = `<div style="max-width:700px; margin:0 auto; text-align:center; color:#888; padding:40px;">Файл <b>${path}</b> не найден. Проверь папку /posts/.</div>`;
+        } else {
+            stageBody.innerHTML = await res.text();
+        }
+        backBtn.style.display = 'flex';
+        backBtn.innerHTML = '✕'; // Заменили "← Back to Home" на лаконичный крестик закрытия
+        backBtn.onclick = closeStage;
         contentStage.style.opacity = '1';
     }, 300);
 }
