@@ -207,7 +207,6 @@ nav {
 .source-item .title {
     font-size: 2.4rem;
     font-family: 'DrpoDecor', serif;
-    font-style: italic;
     color: #fff;
     margin-bottom: 6px;
 }
@@ -259,7 +258,6 @@ nav {
 }
 .magazine-item .content h3 {
     font-family: 'DrpoDecor', serif;
-    font-style: italic;
     font-size: 5.6rem;
     color: #fff;
     line-height: 1.1;
