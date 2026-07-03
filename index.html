@@ -8,10 +8,10 @@
     <!-- ГЛОБАЛЬНЫЕ СТИЛИ (Навигация, Hero, Журнальный стиль) -->
     <link rel="stylesheet" href="css/style.css">
     
-    <!-- СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ LAB (ВОТ ЭТА СТРОКА БЫЛА ПОТЕРЯНА) -->
+    <!-- СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ LAB -->
     <link rel="stylesheet" href="css/lab.css">
     
-    <!-- СТИЛИ ДЛЯ COLLECTION (Если есть) -->
+    <!-- СТИЛИ ДЛЯ COLLECTION -->
     <link rel="stylesheet" href="css/collection.css">
     
     <script src="js/main.js" defer></script>
@@ -29,7 +29,7 @@
     </nav>
 
     <div id="app">
-        <!-- HERO СЕКЦИЯ (Твой слоган, без кнопок) -->
+        <!-- HERO СЕКЦИЯ -->
         <section id="main-stage" class="active-section">
             
             <div class="hero-wrapper">
@@ -45,22 +45,21 @@
                 </div>
             </div>
 
-            <!-- FAVORITES (Блок сверху: теперь здесь сетка в ряд) -->
+            <!-- FAVORITES (В ряд сверху) -->
             <div class="section-block favorites-block">
                 <div class="section-label">FAVORITES</div>
-                <!-- Класс поменяли на sources-grid (в ряд), но ID остался favorites-grid -->
-                <div class="sources-grid" id="favorites-grid"></div>
+                <div class="sources-grid" id="sources-grid"></div>
             </div>
 
-            <!-- SOURCES OF MAGIC (Блок снизу: теперь здесь журнальный стиль) -->
+            <!-- SOURCES OF MAGIC (Журнальный стиль снизу) -->
             <div class="section-block sources-block">
                 <div class="section-label">SOURCES OF MAGIC</div>
-                <!-- Класс поменяли на magazine-grid (журнальный), но ID остался sources-grid -->
-                <div class="magazine-grid" id="sources-grid"></div>
+                <div class="magazine-grid" id="favorites-grid"></div>
             </div>
+
         </section>
 
-        <!-- ОВЕРЛЕЙ (Страницы Collection, Lab и т.д.) -->
+        <!-- ОВЕРЛЕЙ -->
         <div id="content-stage">
             <div class="stage-header">
                 <button class="back-btn" id="back-btn" style="display:none;">← Close</button>
