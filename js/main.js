@@ -63,7 +63,7 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     if(backBtn) {
-        backBtn.style.display = 'block';
+        backBtn.style.display = 'flex';
         backBtn.innerHTML = '✕'; 
         backBtn.onclick = closeStage;
     }
@@ -197,7 +197,7 @@ async function loadStory(file) {
         }
 
         if(backBtn) {
-            backBtn.style.display = 'block';
+            backBtn.style.display = 'flex';
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = () => navigateTo('collection');
         }
@@ -211,7 +211,7 @@ async function loadEssay(file) {
         const res = await fetch(`essays/${file}`);
         stageBody.innerHTML = await res.text();
         if(backBtn) {
-            backBtn.style.display = 'block';
+            backBtn.style.display = 'flex';
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = () => navigateTo('lab');
         }
@@ -236,7 +236,7 @@ async function openPost(file) {
         }
         
         if (backBtn) {
-            backBtn.style.display = 'block';
+            backBtn.style.display = 'flex';
             backBtn.innerHTML = '✕'; 
             backBtn.onclick = closeStage; 
         }
