@@ -210,7 +210,7 @@ nav {
     font-weight: normal;
 }
 .source-item .desc {
-    font-size: 0.85rem;
+    font-size: 2rem;
     color: #888;
     line-height: 1.4;
 }
@@ -261,7 +261,7 @@ nav {
     font-weight: normal; 
 }
 .magazine-item .content p {
-    font-size: 1rem;
+    font-size: 2rem;
     color: #ccc;
     line-height: 1.6;
     max-width: 500px;
