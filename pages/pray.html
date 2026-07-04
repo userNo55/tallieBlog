@@ -1,12 +1,42 @@
-<div style="text-align:center;max-width:800px;margin:0 auto;padding:40px 0;">
-    <h1 style="font-family:'Playfair Display',serif;font-style:italic;font-size:3rem;margin-bottom:20px;">The <span style="color:var(--gold)">Connection</span></h1>
-    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:40px 0;">
-        <a href="#" style="border:1px solid #333;padding:15px 40px;color:#aaa;text-transform:uppercase;font-size:11px;letter-spacing:2px;text-decoration:none;">YouTube</a>
-        <a href="#" style="border:1px solid #333;padding:15px 40px;color:#aaa;text-transform:uppercase;font-size:11px;letter-spacing:2px;text-decoration:none;">VK</a>
-        <a href="#" style="border:1px solid #333;padding:15px 40px;color:#aaa;text-transform:uppercase;font-size:11px;letter-spacing:2px;text-decoration:none;">Instagram</a>
+<div style="text-align: center; max-width: 900px; margin: 0 auto; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    
+    <!-- Главный готический заголовок (Увеличен, шрифт DrpoDecor) -->
+    <h1 style="font-family: 'DrpoDecor', serif; font-weight: normal; font-size: 4.2rem; color: #fff; margin-bottom: 35px;">
+        The <span style="color: var(--gold)">Connection</span>
+    </h1>
+    
+    <!-- Контейнер для кнопок соцсетей (Крупные, сбалансированные) -->
+    <div style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; margin-bottom: 55px; width: 100%;">
+        <a href="#" class="social-link-btn" style="border: 1px solid #333; padding: 18px 45px; color: #aaa; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; text-decoration: none; font-family: 'TW Cen MT', sans-serif; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; background: rgba(15,15,15,0.3);">YouTube</a>
+        <a href="#" class="social-link-btn" style="border: 1px solid #333; padding: 18px 45px; color: #aaa; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; text-decoration: none; font-family: 'TW Cen MT', sans-serif; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; background: rgba(15,15,15,0.3);">VK</a>
+        <a href="#" class="social-link-btn" style="border: 1px solid #333; padding: 18px 45px; color: #aaa; text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; text-decoration: none; font-family: 'TW Cen MT', sans-serif; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; background: rgba(15,15,15,0.3);">Instagram</a>
     </div>
-    <div style="margin-top:60px;border-top:1px solid #222;padding-top:40px;">
-        <button onclick="document.getElementById('discord').style.display='block'" style="border:1px solid var(--gold);color:var(--gold);padding:12px 30px;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:transparent;cursor:pointer;">Unlock Discord</button>
-        <div id="discord" style="display:none;margin-top:20px;color:var(--gold);">discord.gg/tallie_secret</div>
+    
+    <!-- Нижний блок с Discord (Увеличены рамки и шрифты) -->
+    <div style="width: 100%; max-width: 700px; border-top: 1px solid #222; padding-top: 45px; display: flex; flex-direction: column; align-items: center;">
+        <button onclick="document.getElementById('discord').style.display='block'" class="discord-unlock-btn" style="border: 1px solid var(--gold); color: var(--gold); padding: 15px 40px; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; background: transparent; cursor: pointer; font-family: 'TW Cen MT', sans-serif; font-weight: 700; border-radius: 4px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(169, 134, 72, 0.05);">
+            Unlock Discord
+        </button>
+        
+        <!-- Секретная ссылка Discord (Крупная, с легким свечением) -->
+        <div id="discord" style="display: none; margin-top: 30px; color: var(--gold); font-family: 'Tw Cen MT regular', sans-serif; font-size: 1.5rem; letter-spacing: 1px; text-shadow: 0 0 10px rgba(169, 134, 72, 0.3);">
+            discord.gg/tallie_secret
+        </div>
     </div>
+
+    <!-- Встроенные стили ховеров, чтобы кнопки сочно откликались на мышку -->
+    <style>
+        .social-link-btn:hover {
+            color: #fff !important;
+            border-color: #555 !important;
+            background: rgba(30,30,30,0.6) !important;
+            transform: translateY(-2px);
+        }
+        .discord-unlock-btn:hover {
+            color: #080808 !important;
+            background: var(--gold) !important;
+            box-shadow: 0 6px 20px rgba(169, 134, 72, 0.25) !important;
+            transform: translateY(-2px);
+        }
+    </style>
 </div>
