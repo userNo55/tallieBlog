@@ -65,7 +65,6 @@ async function navigateTo(section) {
 
     stageBody.innerHTML = html;
     
-    // Скрываем крестик на страницах общего меню (Collection, Lab)
     if(backBtn) {
         backBtn.classList.add('hidden');
     }
@@ -167,6 +166,7 @@ async function loadStory(file) {
 
         newHtml += `</div>`;
 
+        // Опечатки с дефисами исправлены (tab-place, tab-star, tab-link)
         if (placeBlock) newHtml += `<div class="tab-content" id="tab-place">${placeBlock.innerHTML}</div>`;
         if (starBlock) newHtml += `<div class="tab-content" id="tab-star">${starBlock.innerHTML}</div>`;
         if (linkBlock) newHtml += `<div class="tab-content" id="tab-link">${linkBlock.innerHTML}</div>`;
@@ -183,9 +183,10 @@ async function loadStory(file) {
             const tabs = tabsContainer.querySelectorAll('.tab-btn');
             const contents = document.querySelectorAll('.tab-content');
 
+            // Исправлено: корректно активируем первый доступный таб и его контент
             if (tabs.length > 0 && contents.length > 0) {
-                tabs.classList.add('active');
-                contents.classList.add('active');
+                tabs[0].classList.add('active');
+                contents[0].classList.add('active');
             }
 
             tabs.forEach(tab => {
