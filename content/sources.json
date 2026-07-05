@@ -1,6 +1,6 @@
 [
-  { "id": "playlist", "title": "Playlist", "file": "playlist.html", "image": "playlist.jpg" },
-  { "id": "cinema",   "title": "Cinema",   "file": "cinema.html",   "image": "cinema.jpg" },
-  { "id": "tvshows",  "title": "TV-shows",  "file": "tvshows.html",  "image": "tvshows.jpg" },
-  { "id": "places",   "title": "Places",   "file": "places.html",   "image": "places.jpg" }
+  { "id": "playlist", "title": "Playlist", "file": "playlist.html", "image": "playlist.jpg", "desc": "My ultimately favourite musicians." },
+  { "id": "cinema",   "title": "Cinema",   "file": "cinema.html",   "image": "cinema.jpg", "desc": "Movies I can rewatch and quote anytime." },
+  { "id": "tvshows",  "title": "TV-shows",  "file": "tvshows.html",  "image": "tvshows.jpg", "desc": "Underrated masterpieces and mainstream beloved." },
+  { "id": "places",   "title": "Places",   "file": "places.html",   "image": "places.jpg", "desc": "Countries and cities that feel like home from another life." }
 ]
