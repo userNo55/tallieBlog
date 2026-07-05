@@ -203,7 +203,7 @@ nav {
     border: 1px solid #333;
 }
 .source-item .title {
-    font-size: 2.4rem;
+    font-size: 4rem;
     font-family: 'DrpoDecor', serif;
     color: #fff;
     margin-bottom: 6px;
@@ -255,7 +255,7 @@ nav {
 }
 .magazine-item .content h3 {
     font-family: 'DrpoDecor', serif;
-    font-size: 2.4rem;
+    font-size: 4rem;
     color: #fff;
     line-height: 1.1;
     font-weight: normal; 
