@@ -339,27 +339,29 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    background: #000;
+    background: transparent;
     /* Уникальное скругление «пузатого» экрана старого кинескопа */
     border-radius: 40px / 25px; 
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15), inset 0 0 15px rgba(0,0,0,0.8);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
     border: 3px solid #1a1a1a;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, filter 0.3s;
 }
+
 .tv-card:hover {
     transform: scale(1.03);
     /* Размытое неоновое свечение экрана по бокам при наведении */
-    box-shadow: 0 0 35px rgba(0, 212, 255, 0.4), inset 0 0 10px rgba(0,0,0,0.6);
+    box-shadow: 0 0 35px rgba(0, 212, 255, 0.4);
     border-color: #333;
 }
+
 .tv-screen {
     width: 100%;
     aspect-ratio: 4 / 3;
     background-size: cover;
     background-position: center;
     position: relative;
-    /* Сильный контраст и цветовое насыщение в стиле ретро-клипов */
-    filter: contrast(1.25) brightness(0.95) saturate(1.2);
+    /* Картинка всегда яркая и оригинальная, без искажения цветов */
+    filter: none; 
 }
 
 /* Сетка ЭЛТ-телевизора: горизонтальные сканирующие линии */
@@ -367,17 +369,17 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
     background-size: 100% 4px;
     z-index: 2;
 }
 
-/* Затемнение углов кинескопа (Виньетка) */
+/* Ослабленное затемнение углов кинескопа (Виньетка больше не черная) */
 .crt-vignette {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(0,0,0,0) 90%, rgba(0,0,0,0.85) 100%);
+    background: radial-gradient(circle, rgba(0,0,0,0) 75%, rgba(0,0,0,0.2) 100%);
     z-index: 2;
 }
 
@@ -388,4 +390,70 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     font-family: 'TW Cen MT', sans-serif;
     font-size: 1.4rem;
     color: rgba(255, 255, 255, 0.8);
-    font-weight: 700;z-index: 3;text-shadow: 1px 1px 3px rgba(0,0,0,0.8);}.tv-title-overlay {position: absolute;inset: 0;display: flex;align-items: center;justify-content: center;background: transparent;font-family: 'DrpoDecor', serif;font-size: 2.2rem;color: #fff;text-align: center;padding: 25px;z-index: 3;/* Имитация RGB-свечения текста */text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,255,255,0.5), 0 0 10px rgba(255,255,255,0.4);transition: background 0.3s ease;}.tv-card:hover .tv-title-overlay {background: rgba(0,0,0,0.15);}/* ========================================== // МЕДИАЗАПРОСЫ // ========================================== */@media (max-width: 900px) {nav { padding: 15px 20px; }.nav-links { gap: 20px; }.hero-slogan .line { font-size: 2.2rem; }.hero-slogan .hand { font-size: 3rem; }.sources-grid { grid-template-columns: 1fr 1fr; }.magazine-item { grid-template-columns: 1fr; gap: 20px; direction: ltr !important; }.magazine-item .content h3 { font-size: 2.2rem; }.stage-scroll { padding: 20px; }#back-btn { top: 20px !important; right: 20px !important; font-size: 18px !important; width: 45px !important; height: 45px !important; }}
+    font-weight: 700;
+    z-index: 3;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.tv-title-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    font-family: 'DrpoDecor', serif;
+    font-size: 2.2rem;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    z-index: 3;
+    /* Имитация RGB-свечения текста */
+    text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,255,255,0.5), 0 0 10px rgba(255,255,255,0.4);
+    transition: background 0.3s ease;
+}
+
+/* При наведении экран зажигается белым бликом, проявляя арт еще сильнее */
+.tv-card:hover .tv-title-overlay {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================== */
+/* МЕДИАЗАПРОСЫ */
+/* ========================================== */
+@media (max-width: 900px) {
+    nav { 
+        padding: 15px 20px; 
+    }
+    .nav-links { 
+        gap: 20px; 
+    }
+    .hero-slogan .line { 
+        font-size: 2.2rem; 
+    }
+    .hero-slogan .hand { 
+        font-size: 3rem; 
+    }
+    .sources-grid { 
+        grid-template-columns: 1fr 1fr; 
+    }
+    .magazine-item { 
+        grid-template-columns: 1fr; 
+        gap: 20px; 
+        direction: ltr !important; 
+    }
+    .magazine-item .content h3 { 
+        font-size: 2.2rem; 
+    }
+    .stage-scroll { 
+        padding: 20px; 
+    }
+    #back-btn { 
+        top: 20px !important; 
+        right: 20px !important; 
+        font-size: 18px !important; 
+        width: 45px !important; 
+        height: 45px !important; 
+    }
+}
+
