@@ -66,16 +66,18 @@ body {
 }
 
 /* ==========================================
-   НАВИГАЦИЯ
+   НАВИГАЦИЯ (КОМПЬЮТЕРНАЯ ВЕРСИЯ)
    ========================================== */
 nav {
     position: fixed; 
     top: 0; 
+    left: 0;
     width: 100%;
-    padding: 30px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 20px 60px;
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
     background: rgba(8,8,8,0.85);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -90,6 +92,7 @@ nav {
     letter-spacing: 2px;
     text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon), 0 0 40px var(--neon);
     transition: text-shadow 0.3s ease;
+    flex-shrink: 0;
 }
 
 .logo:hover {
@@ -97,10 +100,12 @@ nav {
 }
 
 .nav-links {
-    display: flex;
-    gap: 50px;
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important; 
+    gap: 40px;
     list-style: none;
-    margin: 0 auto;
+    margin: 0 !important; 
     padding: 0;
 }
 
@@ -113,6 +118,7 @@ nav {
     cursor: pointer;
     padding-bottom: 5px;
     transition: color 0.3s;
+    white-space: nowrap !important; 
 }
 
 .nav-links li::after {
@@ -137,7 +143,7 @@ nav {
 }
 
 #app { 
-    padding-top: 100px; 
+    padding-top: 140px; 
 }
 
 /* ==========================================
@@ -160,7 +166,7 @@ nav {
 }
 
 /* ==========================================
-   СЛОГАН
+   СЛОГАН (КОМПЬЮТЕРНАЯ ВЕРСИЯ)
    ========================================== */
 .hero-slogan {
     display: flex;
@@ -456,16 +462,10 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    font-family: 'DrpoDecor', serif;
-    font-size: 2.2rem;
-    color: #fff;
-    text-align: center;
-    padding: 25px;
-    z-index: 3;
-    text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,255,255,0.5), 0 0 10px rgba(255,255,255,0.4);
-    transition: background 0.3s ease;}.tv-card:hover .tv-title-overlay {background: rgba(255, 255, 255, 0.12);}/* /* ==========================================
-   МЕДИАЗАПРОСЫ (АДАПТИВ КАНАЛА)
+    background: transparent;font-family: 'DrpoDecor', serif;font-size: 2.2rem;color: #fff;text-align: center;padding: 25px;z-index: 3;text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,255,255,0.5), 0 0 10px rgba(255,255,255,0.4);transition: background 0.3s ease;}.tv-card:hover .tv-title-overlay {background: rgba(255, 255, 255, 0.12);}
+    
+    /* ==========================================
+   МЕДИАЗАПРОСЫ (ИЗОЛИРОВАННЫЙ АДАПТИВ)
    ========================================== */
 
 /* Для планшетов и средних экранов (от 601px до 900px) */
@@ -480,22 +480,51 @@ body::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     .stage-scroll { padding: 20px; }
     #back-btn { top: 20px !important; right: 20px !important; font-size: 18px !important; width: 45px !important; height: 45px !important; }
 }
-    
-/* Для мобильных телефонов (строго ДО 600px) */
+
+/* Для mobile-телефонов (строго ДО 600px) */
 @media (max-width: 600px) {
-    /* Меню всегда прибито к верху, но перестроено вертикально */
-    nav { position: fixed !important; top: 0 !important; width: 100% !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 10px 5px !important; background: rgba(8,8,8,0.95) !important; z-index: 1000 !important; }
-    /* Уменьшаем логотип, чтобы он не кушал высоту экрана */
+    /* Меню выстраиваем вертикально */
+    nav { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 10px 5px !important; background: rgba(8,8,8,0.95) !important; z-index: 1000 !important; }
     nav .logo { font-size: 32px !important; margin-bottom: 5px !important; text-align: center !important; }
-    /* Ссылки меню аккуратно в один ряд с переносом */
     .nav-links { flex-direction: row !important; flex-wrap: wrap !important; justify-content: center !important; gap: 5px 12px !important; width: 100% !important; }
-    .nav-links li { font-size: 14px !important; white-space: nowrap !important; }
-    /* Отодвигаем весь контент страниц и оверлея вниз, чтобы шапка ничего не закрывала */
-    #app, .stage-scroll { padding-top: 120px !important; }
-    /* Кнопка "Назад" поверх абсолютно всего кода на странице */
+    .nav-links li { font-size: 14px !important; }
+    
+    /* Чиним слоган WRITE */
+    .hero-wrapper { margin-bottom: 40px !important; }
+    .hero-slogan .line { font-size: 1.8rem !important; flex-direction: row !important; flex-wrap: wrap !important; gap: 8px !important; align-items: baseline !important; }
+    .hero-slogan .hand { font-size: 2.2rem !important; }
+
+    /* ==========================================
+       ГЛОБАЛЬНЫЙ ПЕРЕХВАТ ДЛЯ РАЗДЕЛОВ БЕЗ СВОИХ CSS 
+       (INDULGENTIA, PRAY И ДР.)
+       ========================================== */
+    
+    /* Укрощаем вообще все крупные h1/h2 заголовки внутри активных секций */
+    #main-stage h1, #main-stage h2,
+    .section-block h1, .section-block h2,
+    .stage-scroll h1, .stage-scroll h2 { font-size: 2.4rem !important; text-align: center !important; line-height: 1.2 !important; margin-bottom: 15px !important; word-wrap: break-word !important; }
+
+    /* Ловим любые элементы с DrpoDecor/рукописным стилем внутри секций */
+    #main-stage [style*="DrpoDecor"],
+    .section-block [style*="DrpoDecor"],
+    #main-stage .hand,
+    .section-block .hand { font-size: 2.4rem !important; }
+
+    /* Принудительно уменьшаем весь текст описаний на мобилках */
+    #main-stage p,
+    .section-block p,
+    .stage-scroll p { font-size: 1.2rem !important; max-width: 95% !important; margin: 0 auto 20px auto !important; text-align: center !important; line-height: 1.5 !important; }
+
+    /* Укрощаем огромные кнопки донатов и ссылки, которые косят под кнопки */
+    #main-stage button, #main-stage .btn, #main-stage a[style*="background"],
+    .section-block button, .section-block .btn, .section-block a[style*="background"],
+    .stage-scroll button, .stage-scroll a[style*="background"] { width: 85% !important; max-width: 290px !important; margin: 15px auto !important; display: block !important; font-size: 15px !important; padding: 12px 15px !important; text-align: center !important; box-sizing: border-box !important; }
+
+    /* Отодвигаем контент ниже шапки */
+    #app, .stage-scroll { padding-top: 130px !important; }
     #back-btn { position: fixed !important; top: 15px !important; right: 15px !important; z-index: 9999999 !important; }
+
     /* Разворачиваем карточки по одной в ряд */
     .sources-grid { grid-template-columns: 1fr !important; gap: 35px !important; }
     .source-item .title { font-size: 1.8rem !important; }
 }
-
