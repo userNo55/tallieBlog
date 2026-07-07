@@ -1,4 +1,104 @@
-.lab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-.lab-card { aspect-ratio: 1 / 1; background-size: cover; background-position: center; cursor: pointer; border: 1px solid #222; transition: 0.3s; display: flex; align-items: flex-end; padding: 20px; }
-.lab-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-.lab-card h3 { color: #fff; font-weight: 600; font-size:3.2rem; }
+/* ==========================================================================
+   ВКЛАДКА LAB: ГЛАВНАЯ СЕТКА КАРТОЧЕК
+   ========================================================================== */
+
+.lab-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 20px; 
+}
+
+.lab-card { 
+    aspect-ratio: 1 / 1; 
+    background-size: cover; 
+    background-position: center; 
+    cursor: pointer; 
+    border: 1px solid #222; 
+    transition: 0.3s; 
+    display: flex; 
+    align-items: flex-end; 
+    padding: 20px; 
+}
+
+.lab-card:hover { 
+    border-color: var(--gold); 
+    transform: translateY(-5px); 
+}
+
+/* 📌 УПРАВЛЕНИЕ ШРИФТОМ ЗАГОЛОВКА КАРТОЧКИ НА ПК */
+.lab-card h3 { 
+    color: #fff; 
+    font-weight: 600; 
+    font-size: 3.2rem; 
+    font-family: 'Tw Cen MT regular', sans-serif; /* Задаем шрифт здесь */
+}
+
+
+/* ==========================================================================
+   СТРАНИЦЫ СТАТЕЙ (ВКЛАДКА LAB) — ДЕСКТОПНАЯ ВЕРСИЯ
+   ========================================================================== */
+
+/* Контейнер-обертка для текста статьи */
+.lab-article-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* 📌 УПРАВЛЕНИЕ ШРИФТОМ ГЛАВНОГО ЗАГОЛОВКА СТАТЬИ */
+.world-title {
+    font-size: 4.2rem;
+    color: #fff;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    font-weight: normal;
+    font-family: 'Tw Cen MT regular', sans-serif; /* Если нужен другой шрифт (например, DrpoDecor), просто замени здесь название */
+}
+
+/* 📌 УПРАВЛЕНИЕ ШРИФТОМ ТЕКСТА ИСТОРИИ */
+.story-text {
+    font-size: 2rem;
+    color: #ccc;
+    line-height: 1.6;
+    font-family: 'Tw Cen MT regular', sans-serif; /* Задаем шрифт текста здесь */
+}
+
+/* Отступы между абзацами */
+.story-text p {
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================================================
+   ИЗОЛИРОВАННЫЙ АДАПТИВ ДЛЯ LAB (СТРОГО НА МОБИЛКАХ ДО 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+    /* Сетка карточек на телефоне в одну колонку */
+    .lab-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    /* Уменьшаем шрифт заголовка карточки на мобилке */
+    .lab-card h3 { 
+        font-size: 2rem !important; 
+    }
+
+    /* Адаптивные отступы для контейнера статьи */
+    .lab-article-wrapper {
+        padding: 20px 15px !important;
+    }
+
+    /* Укрощаем гигантский заголовок статьи */
+    .world-title {
+        font-size: 2.2rem !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Комфортный размер шрифта для чтения истории со смартфона */
+    .story-text {
+        font-size: 1.25rem !important;
+        line-height: 1.5 !important;
+    }
+}
