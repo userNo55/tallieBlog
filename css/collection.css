@@ -129,7 +129,7 @@
 
 .world-meta { 
     color: #555; 
-    font-size: 2rem; /* Твои десктопные 2rem для даты */
+    font-size: 2rem; 
     margin-bottom: 30px; 
 }
 
@@ -191,11 +191,11 @@
     height: auto; 
 }
 
-/* СТИЛИ ДЛЯ ВНУТРЕННИХ БЛОКОВ ТАБОВ (PLACE, STAR, LINK) */
+/* СТИЛИ ДЛЯ ВНУТРЕННИХ БЛОКОВ ТАБОВ (PLACE, STAR, LINK) ДЛЯ ПК */
 .place-block p,
 .star-block p,
 .link-block p {
-    font-size: 2rem; /* Твои десктопные 2rem для текста в табах */
+    font-size: 2rem; 
     line-height: 1.5;
     color: #ddd;
 }
@@ -209,7 +209,7 @@
     padding-top: 30px; 
 }
 
-/* Абзацы внутри истории */
+/* Отступы между абзацами */
 .story-text p {
     margin-bottom: 20px;
 }
@@ -258,6 +258,7 @@
     .world-title {
         font-size: 2.2rem !important;
         text-align: center !important;
+        margin-top: 20px !important;
     }
     
     /* Укрощаем гигантскую дату на мобилке */
@@ -265,14 +266,6 @@
         font-size: 1.1rem !important;
         text-align: center !important;
         margin-bottom: 20px !important;
-    }
-
-    /* Укрощаем гигантский текст внутри табов на телефоне */
-    .place-block p,
-    .star-block p,
-    .link-block p {
-        font-size: 1.2rem !important;
-        line-height: 1.4 !important;
     }
 
     /* Навигация табов: аккуратный перенос строк */
@@ -286,11 +279,46 @@
         font-size: 11px !important;
     }
 
-    /* Идеальный читаемый размер самой истории на мобилке */
+    /* ФИКС ДЛЯ СЛИПШЕГОСЯ ТЕКСТА В ТАБАХ (PLACE, STAR, LINK) */
+    .place-block p,
+    .star-block p,
+    .link-block p {
+        font-size: 1.25rem !important;
+        line-height: 1.6 !important; /* Даем воздуху тексту */
+        margin-bottom: 15px !important;
+        display: block !important;
+    }
+
+    /* Чтобы текст не наезжал на картинки в табах */
+    .place-block img,
+    .star-block img {
+        margin-top: 10px !important;
+        display: block !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Идеал для чтения самой истории на мобилке */
     .story-text {
         font-size: 1.25rem !important;
         line-height: 1.5 !important;
         margin-top: 25px !important;
         padding-top: 20px !important;
+    }
+
+    /* ФИКС КРЕСТИКА НАЗАД (ПЕРЕНОС ВНИЗ ИЗ-ЗА НАЕЗДА НА МЕНЮ) */
+    #back-btn {
+        position: fixed !important;
+        top: auto !important;       
+        bottom: 25px !important;    
+        right: 20px !important;     
+        left: auto !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 20px !important;
+        background: rgba(15, 15, 15, 0.95) !important;
+        border: 2px solid var(--gold) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6) !important;
+        z-index: 9999999 !important; 
     }
 }
