@@ -1,13 +1,6 @@
-@font-face {
-    font-family: 'Gloucester';
-    src: url('/fonts/gloucester-mt-extra-condensed.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* ========================================== */
-/* СТИЛИ ДЛЯ COLLECTION */
-/* ========================================== */
+/* ==========================================================================
+   ВКЛАДКА COLLECTION: ГЛАВНАЯ СЕТКА И КАРТОЧКИ ТЕЛЕВИЗОРОВ
+   ========================================================================== */
 
 .collection-header {
     max-width: 900px;
@@ -16,6 +9,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
 .collection-header .main-title {
     font-family: 'Gloucester', serif;
     font-size: 4rem;
@@ -24,6 +18,7 @@
     line-height: 0.95;
     letter-spacing: 2px;
 }
+
 .collection-header .header-line {
     width: 100%;
     height: 2px;
@@ -50,6 +45,7 @@
     transform: perspective(1200px) rotateX(2deg);
     transition: all 0.4s;
 }
+
 .tv-card:hover { 
     transform: perspective(1200px) rotateX(0deg) scale(1.02); 
     box-shadow: 0 20px 60px rgba(197, 155, 60, 0.2);
@@ -105,6 +101,7 @@
     pointer-events: none;
     padding: 15%;
 }
+
 .tv-title-overlay > * {
     display: table-cell;
     vertical-align: middle;
@@ -114,17 +111,27 @@
     white-space: normal;
 }
 
-/* ========================================== */
-/* СТРАНИЦА ИСТОРИИ (World Detail + Tabs) */
-/* ========================================== */
-.world-detail { max-width: 800px; margin: 0 auto; }
+/* ==========================================================================
+   СТРАНИЦА ИСТОРИИ (World Detail + Tabs) — ДЕСКТОПНАЯ ВЕРСИЯ
+   ========================================================================== */
+
+.world-detail { 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
 .world-title { 
     font-family: 'Playfair Display', serif; 
     font-size: 3.5rem; 
     margin-bottom: 10px; 
     color: #fff; 
 }
-.world-meta { color: #555; font-size: 12px; margin-bottom: 30px; }
+
+.world-meta { 
+    color: #555; 
+    font-size: 2rem; /* Твои десктопные 2rem для даты */
+    margin-bottom: 30px; 
+}
 
 .tabs-nav { 
     display: flex; 
@@ -133,6 +140,7 @@
     border-bottom: 1px solid #222; 
     padding-bottom: 15px; 
 }
+
 .tab-btn { 
     cursor: pointer; 
     font-size: 13px; 
@@ -143,7 +151,10 @@
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
-.tab-btn:hover, .tab-btn.active { color: var(--gold); }
+
+.tab-btn:hover, .tab-btn.active { 
+    color: var(--gold); 
+}
 
 .tab-content { 
     display: none; 
@@ -152,9 +163,25 @@
     color: #ccc; 
     line-height: 1.6; 
 }
-.tab-content.active { display: block; }
-.tab-content h4 { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; font-weight: 400; }
-.tab-content p, .tab-content div { font-size: 1rem; color: #ddd; }
+
+.tab-content.active { 
+    display: block; 
+}
+
+.tab-content h4 { 
+    font-size: 13px; 
+    color: #666; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    margin-bottom: 10px; 
+    font-weight: 400; 
+}
+
+.tab-content p, .tab-content div { 
+    font-size: 1rem; 
+    color: #ddd; 
+}
+
 .tab-content img { 
     max-width: 100%; 
     border-radius: 8px; 
@@ -162,6 +189,15 @@
     border: 1px solid #333; 
     width: 100%; 
     height: auto; 
+}
+
+/* СТИЛИ ДЛЯ ВНУТРЕННИХ БЛОКОВ ТАБОВ (PLACE, STAR, LINK) */
+.place-block p,
+.star-block p,
+.link-block p {
+    font-size: 2rem; /* Твои десктопные 2rem для текста в табах */
+    line-height: 1.5;
+    color: #ddd;
 }
 
 .story-text { 
@@ -173,4 +209,88 @@
     padding-top: 30px; 
 }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+/* Абзацы внутри истории */
+.story-text p {
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(5px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+
+/* ==========================================================================
+   ИЗОЛИРОВАННЫЙ АДАПТИВ ДЛЯ COLLECTION (СТРОГО НА МОБИЛКАХ ДО 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .collection-header {
+        margin-bottom: 25px !important;
+        padding: 0 10px !important;
+    }
+    .collection-header .main-title {
+        font-size: 2.5rem !important;
+    }
+
+    /* Телевизоры встают строго по одному в ряд */
+    .tv-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+        padding: 0 15px !important;
+    }
+
+    .tv-title-overlay {
+        padding: 10% !important;
+    }
+    .tv-title-overlay > * {
+        font-size: 1.8rem !important;
+    }
+    .tv-num {
+        font-size: 18px !important;
+        top: 15px !important;
+        right: 15px !important;
+    }
+
+    /* Адаптируем страницу истории */
+    .world-detail {
+        padding: 0 15px !important;
+    }
+    .world-title {
+        font-size: 2.2rem !important;
+        text-align: center !important;
+    }
+    
+    /* Укрощаем гигантскую дату на мобилке */
+    .world-meta {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Укрощаем гигантский текст внутри табов на телефоне */
+    .place-block p,
+    .star-block p,
+    .link-block p {
+        font-size: 1.2rem !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Навигация табов: аккуратный перенос строк */
+    .tabs-nav {
+        flex-wrap: wrap !important;
+        gap: 15px 20px !important;
+        justify-content: center !important;
+        padding-bottom: 10px !important;
+    }
+    .tab-btn {
+        font-size: 11px !important;
+    }
+
+    /* Идеальный читаемый размер самой истории на мобилке */
+    .story-text {
+        font-size: 1.25rem !important;
+        line-height: 1.5 !important;
+        margin-top: 25px !important;
+        padding-top: 20px !important;
+    }
+}
